@@ -1,31 +1,33 @@
 {
-  "manifest_version": 2,
+    "manifest_version": 2,
 
-  "name": "__MSG_extension_name__",
-  "short_name": "TV-Alarm",
-  "description": "__MSG_extension_description__",
+    "name": "__MSG_extension_name__",
+    "short_name": "TV-Alarm",
+    "description": "__MSG_extension_description__",
 
-  "version": "0.1.0",
-  "update_url": "https://clients2.google.com/service/update2/crx",
+    "version": "0.1.0",
+    "update_url": "https://clients2.google.com/service/update2/crx",
 
-  "default_locale": "zh_CN",
+    "default_locale": "zh_CN",
 
-  "icons": { "16": "images/icon-16.png",
-             "48": "images/icon-48.png",
-            "128": "images/icon-128.png" },
+    "icons": {
+        "16": "images/icon-16.png",
+        "48": "images/icon-48.png",
+        "128": "images/icon-128.png"
+    },
 
-  // "background": {
-  //   "scripts": ["eventPage.js", "check.js"]
-  // },
-  
-  "browser_action": {
-    "default_icon": "images/icon-128.png",
-    "default_popup" : "options.html"
-  },
+    // "background": {
+    //   "scripts": ["eventPage.js", "check.js"]
+    // },
 
-  "permissions": [
-    "storage", "tabs",
-    "http://*/*"
-  ]
+    "browser_action": {
+        "default_icon": "images/icon-128.png",
+        "default_popup": "options.html"
+    },
+
+    "permissions": [
+        "storage", "tabs",
+        "http://*/*"
+    ]
 
 }

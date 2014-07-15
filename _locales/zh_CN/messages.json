@@ -7,5 +7,25 @@
    "extension_description": {
       "description": "Description of extension",
       "message": "支持必应词典划词翻译、鼠标取词翻译"
+   },
+
+   "inline_title": {
+      "description": "Inline translator setting",
+      "message": "划译"
+   },
+
+   "inline_enabled": {
+      "description": "Enabled inline translator",
+      "message": "启用划译"
+   },
+
+   "inline_chinese": {
+      "description": "Translate Chinese?",
+      "message": "中文划译"
+   },
+
+   "inline_icon": {
+      "description": "Show icon before translation",
+      "message": "显示划译图标"
    }
 }
