@@ -1,0 +1,11 @@
+{
+   "extension_name": {
+      "description": "Extension name",
+      "message": "必应词典+"
+   },
+
+   "extension_description": {
+      "description": "Description of extension",
+      "message": "支持必应词典划词翻译、鼠标取词翻译"
+   }
+}
