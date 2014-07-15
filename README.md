@@ -10,7 +10,7 @@ Version
 
 -------
 
-- [ ] Basic UI
+- [x] Basic UI
 - [ ] Inline Translator
  - [ ] Get Selected Word(s)
  - [ ] Look Up
