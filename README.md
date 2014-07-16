@@ -11,6 +11,8 @@ Version
 -------
 
 - [x] Basic UI
+- [x] Bing Dict APIs
+- [ ] Data Saving
 - [ ] Inline Translator
  - [ ] Get Selected Word(s)
  - [ ] Look Up
