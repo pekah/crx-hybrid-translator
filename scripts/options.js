@@ -1,8 +1,10 @@
-(function(window, $, chromsg, undefined){
+(function(window, $, undefined){
 	$(document).ready(function(){
-		$("#inline_title").text(chromsg("inline_title"));
-		$("#inline_enabled").text(chromsg("inline_enabled"));
-		$("#inline_chinese").text(chromsg("inline_chinese"));
-		$("#inline_icon").text(chromsg("inline_icon"));
+		//text base on locales
+		$(".chromsg").text(
+			function() {
+				return chrome.i18n.getMessage($(this).attr("id"));
+		});
+		
 	});
-})(window, jQuery, chrome.i18n.getMessage);
+})(window, jQuery);
