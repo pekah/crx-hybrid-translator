@@ -14,15 +14,15 @@
 		});
 		$(".settings").click(saveChanges);
 		//pull settings
-		chrome.storage.local.get("settings", function(settings) {
-			if(!settings) {
-				chrome.storage.sync.get("settings", function(s) {
-					if(s) {
-						showSettings(s["settings"]);
+		chrome.storage.local.get("settings", function(data) {
+			if(!data["settings"]) {
+				chrome.storage.sync.get("settings", function(sync_data) {
+					if(sync_data["settings"]) {
+						showSettings(sync_data["settings"]);
 					}
 				});
 			} else {
-				showSettings(settings["settings"]);
+				showSettings(data["settings"]);
 			}
 		});
 	});
@@ -30,17 +30,18 @@
 
 function saveChanges() {
 	var settings = $(".settings");
-	chrome.storage.local.set({'settings': settings}, function() {
-		chrome.storage.sync.set({'settings': settings});
+	// settings.prop('checked', true);
+	var data = {};
+	$(".settings").each(function() {
+		data[$(this).prop("id")] = $(this).prop("checked");
+	});
+	chrome.storage.local.set({'settings': data}, function() {
+		chrome.storage.sync.set({'settings': data});
 	});
 }
 
-function showSettings(settings) {
-	// $("#inline_enabled_box").attr("checked",'true');
-
-	// settings.each(function() {
-	// 	this.attr("checked",'true');
-	// });
-
-	
+function showSettings(data) {
+	for(var id in data) {
+		$("#" + id).prop("checked", data[id]);
+	}
 }
