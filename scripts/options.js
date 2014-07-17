@@ -15,29 +15,28 @@
 		$(".settings").click(saveChanges);
 		//pull settings
 		chrome.storage.local.get("settings", function(data) {
-			if(!data["settings"]) {
+			if(!data.settings) {
 				chrome.storage.sync.get("settings", function(sync_data) {
-					if(sync_data["settings"]) {
-						showSettings(sync_data["settings"]);
+					if(sync_data.settings) {
+						showSettings(sync_data.settings);
 					}
 				});
 			} else {
-				showSettings(data["settings"]);
+				showSettings(data.settings);
 			}
 		});
 	});
 
 	function saveChanges() {
-		var settings = $(".settings");
 		var data = {};
 		$(".settings").each(function() {
 			data[$(this).prop("id")] = $(this).prop("checked");
 		});
 		chrome.storage.local.set({
-			'settings': data
+			settings : data
 		}, function() {
 			chrome.storage.sync.set({
-				'settings': data
+				settings : data
 			});
 		});
 	}
