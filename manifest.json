@@ -16,9 +16,19 @@
         "128": "images/icon-128.png"
     },
 
-    // "background": {
-    //   "scripts": ["eventPage.js", "check.js"]
-    // },
+    "background": {
+        "scripts": [
+            "scripts/background.js"
+        ]
+    },
+
+    "content_scripts": [ {
+        "js": [
+            "scripts/lib/jquery.min.js",
+            "scripts/content.js"
+        ],
+        "matches": [ "http://*/*", "https://*/*" ]
+    } ],
 
     "browser_action": {
         "default_icon": "images/icon-128.png",

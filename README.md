@@ -13,6 +13,7 @@ Version
 - [x] Basic UI
 - [x] Bing Dict APIs
 - [x] Data Saving
+- [x] Content Scripts Data Passing
 - [ ] Inline Translator
  - [ ] Get Selected Word(s)
  - [ ] Look Up
