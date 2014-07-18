@@ -32,13 +32,27 @@
 		$(".settings").each(function() {
 			data[$(this).prop("id")] = $(this).prop("checked");
 		});
-		chrome.storage.local.set({
-			settings : data
-		}, function() {
-			chrome.storage.sync.set({
-				settings : data
-			});
+		chrome.storage.local.set({"settings" : data}, function() {
+			chrome.storage.sync.set({"settings" : data});
 		});
+
+		// true for asking for tabs
+        chrome.windows.getAll({"populate": true}, function(windows) {
+            for(var w in windows) {
+                for(var t in windows[w].tabs) {
+                	console.log(windows[w].tabs[t].id);
+                    // not runtime
+					chrome.tabs.sendMessage(
+						windows[w].tabs[t].id,
+						{
+							"key": "setting_update",
+							"settings": data
+						}
+					);
+                }
+            }
+        });
+		
 	}
 
 	function showSettings(data) {

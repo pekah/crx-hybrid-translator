@@ -10,14 +10,15 @@ Version
 
 -------
 
-- [x] Basic UI
-- [x] Bing Dict APIs
-- [x] Data Saving
-- [x] Content Scripts Data Passing
+- [x] FrameWork
+ - [x] Bing Dict APIs
+ - [x] Data Saving
+ - [x] Content Scripts Data Passing
+ - [x] Realtime Data Update
+ - [x] Popup Result Panel
 - [ ] Inline Translator
  - [ ] Get Selected Word(s)
- - [ ] Look Up
+ - [ ] Search
  - [ ] Handle Chinese
  - [ ] Show Icon Before Translation
-- [ ] Advanced UI
 - [ ] Cursor Translator
