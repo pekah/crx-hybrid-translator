@@ -16,9 +16,9 @@ Version
  - [x] Content Scripts Data Passing
  - [x] Realtime Data Update
  - [x] Popup Result Panel
-- [ ] Inline Translator
+- [x] Inline Translator
  - [x] Get Selected Word(s)
  - [x] Search
- - [ ] Handle Chinese
+ - [x] Handle Chinese
  - [x] Show Icon Before Translation
 - [ ] Cursor Translator

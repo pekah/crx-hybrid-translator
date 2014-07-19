@@ -78,12 +78,12 @@
                     if(selection.length <= 0) return;
 
                     if(is_inline_enabled) {
-                        if(is_inline_icon) {
-                            if(!is_inline_chinese) {
-                                if(isContainChinese(selection)) {
-                                    return;
-                                }
+                        if(is_inline_chinese == false) {
+                            if(isContainChinese(selection)) {
+                                return;
                             }
+                        }
+                        if(is_inline_icon) {
                             if(event.target.className != extension_id) {
                                 
                                 var oy = event.offsetY - 40,
@@ -115,12 +115,6 @@
     }
 
     function popup(py, px, oy, ox) {
-
-        if(!is_inline_chinese) {
-            if(isContainChinese(selection)) {
-                return;
-            }
-        }
 
         popup_contents.empty();
 
@@ -300,7 +294,7 @@
             if(isChinese(text.charAt(i)))
                 cnt++;
         }
-        if (cnt > 5) return true;
+        if (cnt > 0) return true;
         return false;
     }
 
