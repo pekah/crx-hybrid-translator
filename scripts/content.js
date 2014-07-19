@@ -45,7 +45,8 @@
             .appendTo(document.body)
             .mouseover(function(event) {
                 if(is_inline_enabled) {
-                    popup(popup_icon.position().top+30, popup_icon.position().left);
+                    popup(popup_icon.position().top+30, popup_icon.position().left, 
+                        popup_icon.offset().top+30, popup_icon.offset().left);
                 }
             }).hide();
 
@@ -79,21 +80,19 @@
                     if(is_inline_icon) {
                         if(event.target.className != extension_id) {
                             
+                            var oy = event.offsetY - 40,
+                                ox = event.offsetX + 30,
+                                py = event.pageY - 40,
+                                px = event.pageX + 30,
+                                ww = $(window).width();
                             popup_icon.css({
-                                'top': event.pageY - 40,
-                                'left': event.pageX + 30
+                                'top':  (oy < 0)? py - oy + 2 : py,
+                                'left': (ox+26 > ww)? ww - 26 : px
                             }).show();
-                            // overflow
-                            var os = popup_icon.offset();
-                            var psY = popup_icon.position();
-                            popup_icon.css({
-                                'top':  (os.top  < 0)? ps.top  - os.top  + 2: ps.top,
-                                'left': (os.left < 0)? ps.left - os.left + 2: ps.left
-                            });
 
-
-                            // popup_icon;
                         }
+                    } else {
+                        popup(event.pageY+10, event.pageX+20, event.offsetY+10, event.offsetX + 20);
                     }
                 }
             }).mousedown(function(event) {
@@ -105,7 +104,7 @@
         }
     }
 
-    function popup(top, left) {
+    function popup(py, px, oy, ox) {
         popup_contents.empty();
 
         $.get(lex_link, {'q': selection,'format':'application/json'}, function(lex_data) {
@@ -123,9 +122,10 @@
                 popup_lex(lex_data); 
             }
 
+            var ww = $(window).width();
             popup_panel.css({
-                'top': top,
-                'left': left
+                'top': py,
+                'left': (ox+302 > ww)? ww - 302 : px
             }).show();
 
             $('.'+extension_id).css({
@@ -193,9 +193,25 @@
                     })
                     .append(
                         $('<span>').addClass(extension_id)
+                        .text('.')
+                        .css({
+                            'font-size': 2,
+                            'color': 'grey',
+                            'background-color': 'grey'
+                        }),
+
+                        $('<span>').addClass(extension_id)
                         .text(' '+definitions[d].POS+'. ')
                         .css({
                             'color': 'white',
+                            'background-color': 'grey'
+                        }),
+
+                        $('<span>').addClass(extension_id)
+                        .text('.')
+                        .css({
+                            'font-size': 2,
+                            'color': 'grey',
                             'background-color': 'grey'
                         })
                     ),
@@ -213,7 +229,7 @@
             }
         }
         if(web_def) {
-            $('<hr>').appendTo(popup_contents);
+            $('<hr>').addClass(extension_id).appendTo(popup_contents);
             $('<div>').addClass(extension_id)
             .css({'margin-top': '10px'})
             .appendTo(popup_contents)
