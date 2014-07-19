@@ -6,15 +6,17 @@
  */
 
 (function(window, $, undefined){
-    var is_inline_enabled = false,
+    var extension_id = "BingDictPlus" + chrome.runtime.id,
+        is_inline_enabled = false,
         is_inline_chinese = false,
         is_inline_icon    = false,
         popup_panel,
-        popup_icon;
+        popup_icon,
+        last_selection = "";
 
     //ask for settings
     chrome.runtime.sendMessage({"key": "settings"}, function(response) {
-        setting_setup(response.settings);       
+        setting_setup(response.settings);
     });
 
     chrome.runtime.onMessage.addListener(
@@ -33,7 +35,8 @@
 
     function popup_setup() {
         if($(".BingDictPlus").length == 0 && is_inline_enabled) {
-            popup_icon = $('<img class="BingDictPlus">')
+
+            popup_icon = $('<img class="'+extension_id+'">')
             .prop("src", chrome.extension.getURL("images/popup-icon.png"))
             .css({'position':'absolute'})
             .appendTo(document.body)
@@ -41,7 +44,7 @@
                 popup(popup_icon.position().top+30, popup_icon.position().left);
             }).hide();
 
-            popup_panel = $('<div class="BingDictPlus">').css({
+            popup_panel = $('<div class="'+extension_id+'">').css({
                 'width': 300,
                 'position':'absolute',
                 'background-color':'white',
@@ -56,15 +59,15 @@
             }).hide();
 
             $(document.body).mouseup(function(event) {
-                if(window.getSelection().toString().length > 0 &&
-                    event.target.className != "BingDictPlus") {
+                var selection = window.getSelection().toString();
+                if(selection.length > 0 && event.target.className != extension_id) {
                     popup_icon.css({
-                        'top': event.pageY - 30,
-                        'left': event.pageX + 20
+                        'top': event.pageY - 40,
+                        'left': event.pageX + 30
                     }).show();
                 }
             }).mousedown(function(event) {
-                if(event.target.className != "BingDictPlus") {
+                if(event.target.className != extension_id) {
                     popup_panel.hide();
                     popup_icon.hide();
                 }
