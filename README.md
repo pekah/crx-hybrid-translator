@@ -6,7 +6,7 @@ Chrome extension. Inline translator and cursor translator, result base on Bing D
 Version
 -------
 
-0.2.0
+0.2.5
 
 -------
 
@@ -17,8 +17,8 @@ Version
  - [x] Realtime Data Update
  - [x] Popup Result Panel
 - [ ] Inline Translator
- - [ ] Get Selected Word(s)
- - [ ] Search
+ - [x] Get Selected Word(s)
+ - [x] Search
  - [ ] Handle Chinese
- - [ ] Show Icon Before Translation
+ - [x] Show Icon Before Translation
 - [ ] Cursor Translator

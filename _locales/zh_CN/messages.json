@@ -32,5 +32,35 @@
    "inline_icon": {
       "description": "Show icon before translation",
       "message": "显示划译图标"
+   },
+
+   "no_result": {
+      "description": "No search result",
+      "message": "没有结果："
+   },
+
+   "US": {
+      "description": "United State",
+      "message": "美"
+   },
+
+   "UK": {
+      "description": "United Kindom",
+      "message": "英"
+   },
+
+   "PY": {
+      "description": "Pinyin, Mandarin Chinese",
+      "message": "拼"
+   },
+
+   "web_def": {
+      "description": "Web definition",
+      "message": "网络释义"
+   },
+
+   "machine_translation": {
+      "description": "Machine definition",
+      "message": "机器翻译"
    }
 }
