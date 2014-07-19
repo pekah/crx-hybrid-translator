@@ -46,8 +46,7 @@
                 .appendTo(document.body)
                 .mouseover(function(event) {
                     if(is_inline_enabled) {
-                        popup(popup_icon.position().top+30, popup_icon.position().left, 
-                            popup_icon.offset().top+30, popup_icon.offset().left);
+                        popup_panel.show();
                     }
                 }).hide();
 
@@ -83,6 +82,7 @@
                                 return;
                             }
                         }
+                        // popup icon
                         if(is_inline_icon) {
                             if(event.target.className != extension_id) {
                                 
@@ -96,9 +96,13 @@
                                     'left': (ox+26 > ww)? ww - 26 : px
                                 }).show();
 
+                                popup_prepare(popup_icon.position().top+30, popup_icon.position().left, 
+                                    popup_icon.offset().top+30, popup_icon.offset().left);
+
                             }
                         } else {
-                            popup(event.pageY+10, event.pageX+20, event.offsetY+10, event.offsetX + 20);
+                            popup_prepare(event.pageY+10, event.pageX+20, event.offsetY+10, event.offsetX + 20);
+                            popup_panel.show();
                         }
                     }
                 }).mousedown(function(event) {
@@ -114,7 +118,7 @@
         }
     }
 
-    function popup(py, px, oy, ox) {
+    function popup_prepare(py, px, oy, ox) {
 
         popup_contents.empty();
 
@@ -137,7 +141,7 @@
             popup_panel.css({
                 'top': py,
                 'left': (ox+302 > ww)? ww - 302 : px
-            }).show();
+            });
 
             $('.'+extension_id).css({
                 'text-align': 'left',
@@ -145,7 +149,7 @@
                 'text-shadow': '0px 0px',
                 'line-height': 'normal'
             });
-        });  
+        });
     }
 
     function popup_no_result() {
