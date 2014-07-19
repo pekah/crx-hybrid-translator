@@ -6,7 +6,7 @@ Chrome extension. Inline translator and cursor translator, result base on Bing D
 Version
 -------
 
-0.1.0
+0.2.0
 
 -------
 

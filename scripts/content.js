@@ -56,15 +56,18 @@
             }).hide();
 
             $(document.body).mouseup(function(event) {
-                if(window.getSelection().toString().length > 0) {
+                if(window.getSelection().toString().length > 0 &&
+                    event.target.className != "BingDictPlus") {
                     popup_icon.css({
                         'top': event.pageY - 30,
                         'left': event.pageX + 20
                     }).show();
                 }
-            }).mousedown(function() {
-                popup_panel.hide();
-                popup_icon.hide();
+            }).mousedown(function(event) {
+                if(event.target.className != "BingDictPlus") {
+                    popup_panel.hide();
+                    popup_icon.hide();
+                }
             });
         }   
     }
