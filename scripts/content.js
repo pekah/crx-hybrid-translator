@@ -37,74 +37,91 @@
     }
 
     function popup_setup() {
-        if($(".BingDictPlus").length == 0 && is_inline_enabled) {
+        if($('.'+extension_id).length == 0) {
+            if(is_inline_enabled) {
 
-            popup_icon = $('<img>').addClass(extension_id)
-            .prop("src", chrome.extension.getURL("images/popup-icon.png"))
-            .css({'position':'absolute','z-index': 99999})
-            .appendTo(document.body)
-            .mouseover(function(event) {
-                if(is_inline_enabled) {
-                    popup(popup_icon.position().top+30, popup_icon.position().left, 
-                        popup_icon.offset().top+30, popup_icon.offset().left);
-                }
-            }).hide();
-
-            popup_panel = $('<div>').addClass(extension_id)
-            .css({
-                'width': 300,
-                'position':'absolute',
-                'z-index': 99998,
-                'background-color':'white',
-                'border-style': 'solid',
-                'border-width': '1px',
-                'border-color': '#0066CC'
-            })
-            .appendTo(document.body)
-            .mouseleave(function() {
-                popup_panel.hide();
-            }).hide();
-
-            popup_contents = $('<div>').addClass(extension_id)
-            .css({
-                'margin': 10,
-                'color': '#1A1A1A',
-                'font-size': 12
-            }).appendTo(popup_panel);
-
-            $(document.body).mouseup(function(event) {
-                selection = window.getSelection().toString();
-                if(selection.length <= 0) return;
-
-                if(is_inline_enabled) {
-                    if(is_inline_icon) {
-                        if(event.target.className != extension_id) {
-                            
-                            var oy = event.offsetY - 40,
-                                ox = event.offsetX + 30,
-                                py = event.pageY - 40,
-                                px = event.pageX + 30,
-                                ww = $(window).width();
-                            popup_icon.css({
-                                'top':  (oy < 0)? py - oy + 2 : py,
-                                'left': (ox+26 > ww)? ww - 26 : px
-                            }).show();
-
-                        }
-                    } else {
-                        popup(event.pageY+10, event.pageX+20, event.offsetY+10, event.offsetX + 20);
+                popup_icon = $('<img>').addClass(extension_id)
+                .prop("src", chrome.extension.getURL("images/popup-icon.png"))
+                .css({'position':'absolute','z-index': 99999})
+                .appendTo(document.body)
+                .mouseover(function(event) {
+                    if(is_inline_enabled) {
+                        popup(popup_icon.position().top+30, popup_icon.position().left, 
+                            popup_icon.offset().top+30, popup_icon.offset().left);
                     }
-                }
-            }).mousedown(function(event) {
-                if(event.target.className != extension_id) {
+                }).hide();
+
+                popup_panel = $('<div>').addClass(extension_id)
+                .css({
+                    'width': 300,
+                    'position':'absolute',
+                    'z-index': 99998,
+                    'background-color':'white',
+                    'border-style': 'solid',
+                    'border-width': '1px',
+                    'border-color': '#0066CC'
+                })
+                .appendTo(document.body)
+                .mouseleave(function() {
                     popup_panel.hide();
-                    popup_icon.hide();
-                }
-            });
+                }).hide();
+
+                popup_contents = $('<div>').addClass(extension_id)
+                .css({
+                    'margin': 10,
+                    'color': '#1A1A1A',
+                    'font-size': 12
+                }).appendTo(popup_panel);
+
+                $(document.body).mouseup(function(event) {
+                    selection = window.getSelection().toString();
+                    if(selection.length <= 0) return;
+
+                    if(is_inline_enabled) {
+                        if(is_inline_icon) {
+                            if(!is_inline_chinese) {
+                                if(isContainChinese(selection)) {
+                                    return;
+                                }
+                            }
+                            if(event.target.className != extension_id) {
+                                
+                                var oy = event.offsetY - 40,
+                                    ox = event.offsetX + 30,
+                                    py = event.pageY - 40,
+                                    px = event.pageX + 30,
+                                    ww = $(window).width();
+                                popup_icon.css({
+                                    'top':  (oy < 0)? py - oy + 2 : py,
+                                    'left': (ox+26 > ww)? ww - 26 : px
+                                }).show();
+
+                            }
+                        } else {
+                            popup(event.pageY+10, event.pageX+20, event.offsetY+10, event.offsetX + 20);
+                        }
+                    }
+                }).mousedown(function(event) {
+                    if(event.target.className != extension_id) {
+                        popup_panel.hide();
+                        popup_icon.hide();
+                    }
+                });
+            }
+        } else {
+            popup_panel.hide();
+            popup_icon.hide();
         }
     }
 
     function popup(py, px, oy, ox) {
+
+        if(!is_inline_chinese) {
+            if(isContainChinese(selection)) {
+                return;
+            }
+        }
+
         popup_contents.empty();
 
         $.get(lex_link, {'q': selection,'format':'application/json'}, function(lex_data) {
@@ -268,6 +285,23 @@
         $('<p>').addClass(extension_id)
         .text(data.MT.T.replace(/(\{\d*#)|(\$\d*\})/g, ""))
         .appendTo(popup_contents);
+    }
+
+    function isChinese(letter) { 
+        var re = /[^\u4e00-\u9fa5]/; 
+        if(re.test(letter)) return false; 
+        return true; 
+    }
+
+    function isContainChinese(text) {
+        var cnt = 0;
+        for(var i=0;i < text.length ; i++)
+        {
+            if(isChinese(text.charAt(i)))
+                cnt++;
+        }
+        if (cnt > 5) return true;
+        return false;
     }
 
 })(window, jQuery);
