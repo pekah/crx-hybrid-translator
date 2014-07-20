@@ -46,7 +46,7 @@
                 .appendTo(document.body)
                 .mouseover(function(event) {
                     if(is_inline_enabled) {
-                        popup_panel.show();
+                        popup(popup_icon.offset().top+30, popup_icon.offset().left);
                     }
                 }).hide();
 
@@ -86,23 +86,17 @@
                         if(is_inline_icon) {
                             if(event.target.className != extension_id) {
                                 
-                                var oy = event.offsetY - 40,
-                                    ox = event.offsetX + 30,
-                                    py = event.pageY - 40,
+                                var py = event.pageY - 40,
                                     px = event.pageX + 30,
                                     ww = $(window).width();
                                 popup_icon.css({
-                                    'top':  (oy < 0)? py - oy + 2 : py,
-                                    'left': (ox+26 > ww)? ww - 26 : px
+                                    'top':  (py < 0)? 2 : py,
+                                    'left': (px+26 > ww)? ww - 26 : px
                                 }).show();
-
-                                popup_prepare(popup_icon.position().top+30, popup_icon.position().left, 
-                                    popup_icon.offset().top+30, popup_icon.offset().left);
 
                             }
                         } else {
-                            popup_prepare(event.pageY+10, event.pageX+20, event.offsetY+10, event.offsetX + 20);
-                            popup_panel.show();
+                            popup(event.pageY+10, event.pageX+20);
                         }
                     }
                 }).mousedown(function(event) {
@@ -118,7 +112,7 @@
         }
     }
 
-    function popup_prepare(py, px, oy, ox) {
+    function popup(py, px) {
 
         popup_contents.empty();
 
@@ -140,8 +134,8 @@
             var ww = $(window).width();
             popup_panel.css({
                 'top': py,
-                'left': (ox+302 > ww)? ww - 302 : px
-            });
+                'left': (px+302 > ww)? ww - 302 : px
+            }).show();
 
             $('.'+extension_id).css({
                 'text-align': 'left',
