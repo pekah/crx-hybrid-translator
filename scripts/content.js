@@ -286,13 +286,11 @@
     }
 
     function isContainChinese(text) {
-        var cnt = 0;
-        for(var i=0;i < text.length ; i++)
-        {
-            if(isChinese(text.charAt(i)))
-                cnt++;
+        for(var i = 0; i < text.length; i++) {
+            if(isChinese(text.charAt(i))) {
+                return true;
+            }
         }
-        if (cnt > 0) return true;
         return false;
     }
 
