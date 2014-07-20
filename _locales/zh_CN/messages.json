@@ -24,14 +24,24 @@
       "message": "启用划译"
    },
 
-   "inline_chinese": {
-      "description": "Translate Chinese?",
-      "message": "中文划译"
+   "other_title": {
+      "description": "Other setting",
+      "message": "其它"
    },
 
-   "inline_icon": {
+   "trans_chinese": {
+      "description": "Translate Chinese?",
+      "message": "中文翻译"
+   },
+
+   "trans_icon": {
       "description": "Show icon before translation",
-      "message": "显示划译图标"
+      "message": "显示图标"
+   },
+
+   "trans_autoplay": {
+      "description": "Play sound as soon as panel popup",
+      "message": "自动发音"
    },
 
    "no_result": {

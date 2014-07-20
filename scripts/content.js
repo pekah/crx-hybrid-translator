@@ -7,9 +7,10 @@
 
 (function(window, $, undefined){
     var extension_id = "BingDictPlus" + chrome.runtime.id,
-        is_inline_enabled = false,
-        is_inline_chinese = false,
-        is_inline_icon    = false,
+        is_inline_enabled = true,
+        is_trans_chinese  = false,
+        is_trans_icon     = true,
+        is_trans_autoplay = false,
         panel_width = 300,
         popup_panel,
         popup_contents,
@@ -18,7 +19,7 @@
         lex_link = 'http://dict.bing.com.cn/api/http/v3/0003462a56234cee982be652b8ea1e5f/en-us/zh-cn/lexicon',
         trans_link = 'http://dict.bing.com.cn/api/http/v3/0003462a56234cee982be652b8ea1e5f/en-us/zh-cn/translation',
         voice_link = 'http://media.engkoo.com:8129/en-us/',
-        voice_code;
+        voice;
 
     //ask for settings
     chrome.runtime.sendMessage({"key": "settings"}, function(response) {
@@ -34,8 +35,9 @@
 
     function setting_setup(settings) {
         is_inline_enabled = settings.inline_enabled_box;
-        is_inline_chinese = settings.inline_chinese_box;
-        is_inline_icon    = settings.inline_icon_box;
+        is_trans_chinese  = settings.trans_chinese_box;
+        is_trans_icon     = settings.trans_icon_box;
+        is_trans_autoplay = settings.trans_autoplay_box;
         popup_setup();
     }
 
@@ -80,13 +82,13 @@
                     if(selection.length <= 0) return;
 
                     if(is_inline_enabled) {
-                        if(is_inline_chinese == false) {
+                        if(is_trans_chinese == false) {
                             if(isContainChinese(selection)) {
                                 return;
                             }
                         }
                         // popup icon
-                        if(is_inline_icon) {
+                        if(is_trans_icon) {
                             if(event.target.className != extension_id) {
                                 
                                 var py = event.pageY - 40,
@@ -166,7 +168,7 @@
 
         // voice
         if(data.QD.HW.SIG) {
-            voice_code = data.QD.HW.SIG;
+            voice = new Audio(voice_link+data.QD.HW.SIG+'.mp3');
             $('<img>').addClass(extension_id)
             .prop("src", chrome.extension.getURL("images/voice.png"))
             .css({
@@ -175,9 +177,13 @@
                 'margin-right': 20
             })
             .mouseover(function() {
-                (new Audio(voice_link+voice_code+'.mp3')).play();
+                voice.play();
             })
             .appendTo(popup_contents);
+            
+            if(is_trans_autoplay) {
+                voice.play();
+            }
         }
 
         // title
