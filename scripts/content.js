@@ -10,12 +10,15 @@
         is_inline_enabled = false,
         is_inline_chinese = false,
         is_inline_icon    = false,
+        panel_width = 300,
         popup_panel,
         popup_contents,
         popup_icon,
         selection,
         lex_link = 'http://dict.bing.com.cn/api/http/v3/0003462a56234cee982be652b8ea1e5f/en-us/zh-cn/lexicon',
-        trans_link = 'http://dict.bing.com.cn/api/http/v3/0003462a56234cee982be652b8ea1e5f/en-us/zh-cn/translation';
+        trans_link = 'http://dict.bing.com.cn/api/http/v3/0003462a56234cee982be652b8ea1e5f/en-us/zh-cn/translation',
+        voice_link = 'http://media.engkoo.com:8129/en-us/',
+        voice_code;
 
     //ask for settings
     chrome.runtime.sendMessage({"key": "settings"}, function(response) {
@@ -52,7 +55,7 @@
 
                 popup_panel = $('<div>').addClass(extension_id)
                 .css({
-                    'width': 300,
+                    'width': panel_width,
                     'position':'absolute',
                     'z-index': 99998,
                     'background-color':'white',
@@ -134,7 +137,7 @@
             var ww = $(window).width();
             popup_panel.css({
                 'top': py,
-                'left': (px+302 > ww)? ww - 302 : px
+                'left': (px+panel_width+2 > ww)? ww - panel_width+2 : px
             }).show();
 
             $('.'+extension_id).css({
@@ -161,9 +164,25 @@
 
     function popup_lex(data) {
 
+        // voice
+        if(data.QD.HW.SIG) {
+            voice_code = data.QD.HW.SIG;
+            $('<img>').addClass(extension_id)
+            .prop("src", chrome.extension.getURL("images/voice.png"))
+            .css({
+                'float':'right',
+                'width': 24,
+                'margin-right': 20
+            })
+            .mouseover(function() {
+                (new Audio(voice_link+voice_code+'.mp3')).play();
+            })
+            .appendTo(popup_contents);
+        }
+
         // title
         $('<div>').addClass(extension_id)
-        .text(data.QD.HW.V)
+        .text((data.QD.HW.V)?data.QD.HW.V:data.Q)
         .css({
             'font-weight': 'bold', 
             'font-size': 20
@@ -274,7 +293,7 @@
         .text(chrome.i18n.getMessage("machine_translation")+":")
         .appendTo(popup_contents);
 
-        $('<p>').addClass(extension_id)
+        $('<span>').addClass(extension_id)
         .text(data.MT.T.replace(/(\{\d*#)|(\$\d*\})/g, ""))
         .appendTo(popup_contents);
     }

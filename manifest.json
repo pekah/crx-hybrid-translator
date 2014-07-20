@@ -5,7 +5,7 @@
     "short_name": "__MSG_extension_short_name__",
     "description": "__MSG_extension_description__",
 
-    "version": "1.0.2",
+    "version": "1.1.2",
     "update_url": "https://clients2.google.com/service/update2/crx",
 
     "default_locale": "zh_CN",
@@ -31,7 +31,7 @@
         "matches": [ "http://*/*", "https://*/*" ]
     } ],
 
-    "web_accessible_resources": [ "images/popup-icon.png" ],
+    "web_accessible_resources": [ "images/popup-icon.png" , "images/voice.png"],
 
     "browser_action": {
         "default_icon": "images/icon-128.png",
