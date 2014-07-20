@@ -7,6 +7,14 @@
 
 (function(window, $, undefined){
 	$(document).ready(function(){
+
+		chrome.runtime.onInstalled.addListener(function(details) {
+			if(detailes.reason == 'install') {
+				$('.install').prop("checked", true);
+				saveChanges();
+			}
+		});
+
 		//text base on locales
 		$(".chromsg").text(
 			function() {
@@ -40,7 +48,6 @@
         chrome.windows.getAll({"populate": true}, function(windows) {
             for(var w in windows) {
                 for(var t in windows[w].tabs) {
-                	console.log(windows[w].tabs[t].id);
                     // not runtime
 					chrome.tabs.sendMessage(
 						windows[w].tabs[t].id,

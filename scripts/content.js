@@ -180,7 +180,7 @@
                 voice.play();
             })
             .appendTo(popup_contents);
-            
+
             if(is_trans_autoplay) {
                 voice.play();
             }
