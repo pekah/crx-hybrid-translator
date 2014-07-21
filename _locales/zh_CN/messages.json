@@ -49,6 +49,16 @@
       "message": "没有结果："
    },
 
+   "more_definitions": {
+      "description": "More definitions",
+      "message": "更多释义"
+   },
+
+   "web_search": {
+      "description": "Web search",
+      "message": "网页搜索"
+   },
+
    "US": {
       "description": "United State",
       "message": "美"

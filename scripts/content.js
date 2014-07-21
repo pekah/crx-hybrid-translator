@@ -15,6 +15,7 @@
         popup_panel,
         popup_contents,
         popup_icon,
+        popup_bottomlinks,
         selection,
         lex_link = 'http://dict.bing.com.cn/api/http/v3/0003462a56234cee982be652b8ea1e5f/en-us/zh-cn/lexicon',
         trans_link = 'http://dict.bing.com.cn/api/http/v3/0003462a56234cee982be652b8ea1e5f/en-us/zh-cn/translation',
@@ -66,8 +67,31 @@
                     'border-color': '#0066CC'
                 })
                 .appendTo(document.body)
+                .mouseenter(function() {
+                    popup_bottomlinks.append(
+                        $('<a>').addClass(extension_id)
+                        .prop({
+                            'href': "http://cn.bing.com/dict/search?q="+selection,
+                            'target': '_blank'
+                        }).css({
+                            'font-size': 12,
+                            'text-decoration': 'NONE',
+                            'margin-right' : 10
+                        }).text(chrome.i18n.getMessage("more_definitions")),
+
+                        $('<a>').addClass(extension_id)
+                        .prop({
+                            'href': "http://cn.bing.com/search?q="+selection,
+                            'target': '_blank'
+                        }).css({
+                            'font-size': 12,
+                            'text-decoration': 'NONE'
+                        }).text(chrome.i18n.getMessage("web_search"))
+                    ).show();
+                })
                 .mouseleave(function() {
                     popup_panel.hide();
+                    popup_bottomlinks.empty().hide();
                 }).hide();
 
                 popup_contents = $('<div>').addClass(extension_id)
@@ -76,6 +100,15 @@
                     'color': '#1A1A1A',
                     'font-size': 12
                 }).appendTo(popup_panel);
+
+                popup_bottomlinks = $('<div>')
+                .css({
+                    'text-align': 'right',
+                    'float': 'right',
+                    'width': '200',
+                    'margin-right': 15
+                })
+                .appendTo(popup_panel).hide();
 
                 $(document.body).mouseup(function(event) {
                     selection = window.getSelection().toString();
