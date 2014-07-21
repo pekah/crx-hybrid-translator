@@ -158,7 +158,10 @@
         .appendTo(popup_contents);
 
         $('<a>').addClass(extension_id)
-        .prop("href", "http://cn.bing.com/dict/search?q="+selection)
+        .prop({
+            "href": "http://cn.bing.com/dict/search?q="+selection,
+            "target": "_blank"
+        })
         .css('text-decoration', 'NONE')
         .text(selection)
         .appendTo(popup_contents);
