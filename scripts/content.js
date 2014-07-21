@@ -20,7 +20,7 @@
         lex_link = 'http://dict.bing.com.cn/api/http/v3/0003462a56234cee982be652b8ea1e5f/en-us/zh-cn/lexicon',
         trans_link = 'http://dict.bing.com.cn/api/http/v3/0003462a56234cee982be652b8ea1e5f/en-us/zh-cn/translation',
         voice_link = 'http://media.engkoo.com:8129/en-us/',
-        voice;
+        voice_code;
 
     //ask for settings
     chrome.runtime.sendMessage({"key": "settings"}, function(response) {
@@ -204,7 +204,6 @@
 
         // voice
         if(data.QD.HW.SIG) {
-            voice = new Audio(voice_link+data.QD.HW.SIG+'.mp3');
             $('<img>').addClass(extension_id)
             .prop("src", chrome.extension.getURL("images/voice.png"))
             .css({
@@ -212,13 +211,13 @@
                 'width': 24,
                 'margin-right': 20
             })
-            .mouseover(function() {
-                voice.play();
+            .mouseenter(function() {
+                (new Audio(voice_link+voice_code+'.mp3')).play();
             })
             .appendTo(popup_contents);
 
             if(is_trans_autoplay) {
-                voice.play();
+                (new Audio(voice_link+voice_code+'.mp3')).play();
             }
         }
 
