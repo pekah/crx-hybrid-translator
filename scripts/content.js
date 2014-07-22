@@ -204,6 +204,7 @@
 
         // voice
         if(data.QD.HW.SIG) {
+            voice_code = data.QD.HW.SIG;
             $('<img>').addClass(extension_id)
             .prop("src", chrome.extension.getURL("images/voice.png"))
             .css({
