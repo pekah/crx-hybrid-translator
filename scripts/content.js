@@ -68,30 +68,14 @@
                 })
                 .appendTo(document.body)
                 .mouseenter(function() {
-                    popup_bottomlinks.append(
-                        $('<a>').addClass(extension_id)
-                        .prop({
-                            'href': "http://cn.bing.com/dict/search?q="+selection,
-                            'target': '_blank'
-                        }).css({
-                            'font-size': 12,
-                            'text-decoration': 'NONE',
-                            'margin-right' : 10
-                        }).text(chrome.i18n.getMessage("more_definitions")),
-
-                        $('<a>').addClass(extension_id)
-                        .prop({
-                            'href': "http://cn.bing.com/search?q="+selection,
-                            'target': '_blank'
-                        }).css({
-                            'font-size': 12,
-                            'text-decoration': 'NONE'
-                        }).text(chrome.i18n.getMessage("web_search"))
-                    ).show();
+                    var children = popup_bottomlinks.children();
+                    $(children[0]).prop('href', "http://cn.bing.com/dict/search?q="+selection);
+                    $(children[1]).prop('href', "http://cn.bing.com/search?q="+selection);
+                    popup_bottomlinks.show();
                 })
                 .mouseleave(function() {
                     popup_panel.hide();
-                    popup_bottomlinks.empty().hide();
+                    popup_bottomlinks.hide();
                 }).hide();
 
                 popup_contents = $('<div>').addClass(extension_id)
@@ -107,7 +91,22 @@
                     'float': 'right',
                     'width': '200',
                     'margin-right': 15
-                })
+                }).append(
+                    $('<a>').addClass(extension_id)
+                    .prop('target', '_blank')
+                    .css({
+                        'font-size': 12,
+                        'text-decoration': 'NONE',
+                        'margin-right' : 10
+                    }).text(chrome.i18n.getMessage("more_definitions")),
+
+                    $('<a>').addClass(extension_id)
+                    .prop('target', '_blank')
+                    .css({
+                        'font-size': 12,
+                        'text-decoration': 'NONE'
+                    }).text(chrome.i18n.getMessage("web_search"))
+                )
                 .appendTo(popup_panel).hide();
 
                 $(document.body).mouseup(function(event) {
