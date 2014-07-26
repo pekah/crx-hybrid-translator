@@ -151,8 +151,6 @@
 
     function popup(py, px) {
 
-        popup_contents.empty();
-
         $.get(lex_link, {'q': selection,'format':'application/json'}, function(lex_data) {
             // no result
             if(lex_data.Q == null) {
@@ -184,6 +182,9 @@
     }
 
     function popup_no_result() {
+
+        popup_contents.empty();
+
         $('<div>').addClass(extension_id)
         .css({'font-weight': 'bold'})
         .text(chrome.i18n.getMessage("no_result"))
@@ -200,6 +201,8 @@
     }
 
     function popup_lex(data) {
+
+        popup_contents.empty();
 
         // voice
         if(data.QD.HW.SIG) {
@@ -329,6 +332,9 @@
     }
 
     function popup_trans(data) {
+
+        popup_contents.empty();
+
         $('<div>').addClass(extension_id)
         .css({'font-weight': 'bold'})
         .text(chrome.i18n.getMessage("machine_translation")+":")
