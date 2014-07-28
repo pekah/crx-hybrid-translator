@@ -1,6 +1,8 @@
 Bing Dict Plus
 ==============
 
+<a target="_blank" href="https://chrome.google.com/webstore/detail/kkgcfdmlnfpdjmnheeojdlgpmhaeekga">![Try it now in CWS](https://raw.githubusercontent.com/Crimx/BingDictPlus/master/assets/images/tryitnow.png "Click here to install this sample from the Chrome Web Store")</a>
+
 Chrome extension. Inline translator and cursor translator, result base on Bing Dict.
 
 Version
