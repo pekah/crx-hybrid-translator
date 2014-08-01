@@ -8,18 +8,12 @@
 (function(window, $, undefined){
 	$(document).ready(function(){
 
-		chrome.runtime.onInstalled.addListener(function(details) {
-			if(detailes.reason == 'install') {
-				$('.install').prop("checked", true);
-				saveChanges();
-			}
-		});
-
 		//text base on locales
 		$(".chromsg").text(
 			function() {
 				return chrome.i18n.getMessage($(this).attr("id"));
 		});
+
 		$(".settings").click(saveChanges);
 		//pull settings
 		chrome.storage.local.get("settings", function(data) {
@@ -27,6 +21,10 @@
 				chrome.storage.sync.get("settings", function(sync_data) {
 					if(sync_data.settings) {
 						showSettings(sync_data.settings);
+					} else {
+						// first time setup
+						$('.install').prop("checked", true);
+						saveChanges();
 					}
 				});
 			} else {
@@ -48,7 +46,7 @@
         chrome.windows.getAll({"populate": true}, function(windows) {
             for(var w in windows) {
                 for(var t in windows[w].tabs) {
-                    // not runtime
+                    // not chrome.runtime
 					chrome.tabs.sendMessage(
 						windows[w].tabs[t].id,
 						{
