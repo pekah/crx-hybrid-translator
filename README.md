@@ -16,22 +16,22 @@
 Version
 -------
 
-1.3.0
+2.0.0
 
 -------
 
-- [x] FrameWork
-  - [x] Bing Dict APIs
-  - [x] Data Saving
-  - [x] Content Scripts Data Passing
-  - [x] Data Passing
-  - [x] Popup Panel
-    - [x] Search
-    - [x] Handle Chinese
-    - [x] Show Icon Before Translation
-    - [x] Speech
-    - [x] Bottom Links
- - [x] Inline Translator
-   - [x] Get Selected Word(s)
+- [ ] FrameWork
+  - [X] Bing Dict APIs
+  - [X] Data Saving
+  - [ ] Content Scripts Data Passing
+  - [X] Data Passing
+  - [ ] Popup Panel
+    - [ ] Search
+    - [ ] Handle Chinese
+    - [ ] Show Icon Before Translation
+    - [ ] Speech
+    - [ ] Bottom Links
+ - [ ] Inline Translator
+   - [ ] Get Selected Word(s)
  - [ ] Cursor Translator
    - [ ] Get Pointed Word
