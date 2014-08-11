@@ -41,8 +41,9 @@
   }
 
   function showSettings(data) {
-    $.each(data, function (k, id) {
-      $("#" + id).prop("checked", data[id]);
+    console.dir(data);
+    $.each(data, function (id, value) {
+      $("#" + id).prop("checked", value);
     });
   }
 
@@ -67,7 +68,7 @@
             showSettings(syncData.settings);
           } else {
             // first time setup
-            $('.install').prop("checked", true);
+            $(".install").prop("checked", true);
             saveSettings();
           } // end else
         });
