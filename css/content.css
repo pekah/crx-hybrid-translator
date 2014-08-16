@@ -1,0 +1,17 @@
+/*
+ * Jesse Wong
+ * @straybugs
+ * https://github.com/Crimx/BingDictPlus
+ * MIT Licensed
+ */
+
+.crimxbdplus {
+  position: absolute;
+  z-index: 99999;
+}
+
+#crimxframe {
+  width: 300;
+  background-color: white;
+  border: 1px solid #06C
+}

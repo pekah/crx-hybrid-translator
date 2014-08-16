@@ -4,21 +4,25 @@
  * https://github.com/Crimx/BingDictPlus
  * MIT Licensed
  */
-console.log("background");
+"use strict"
+
+// grab settings
 chrome.runtime.onMessage.addListener(
-	function(request, sender, sendResponse) {
-		if (request.key == "settings") {
-			chrome.storage.local.get("settings", function(data) {
-				if (data.settings === undefined) {
-					chrome.storage.sync.get("settings", function(sync_data) {
-						if (sync_data.settings !== undefined) {
-							sendResponse(sync_data);
-						}
-					});
-				} else {
-					sendResponse(data);
-				}
-			});
-		}
-		return true; //Keep the channel open
+    function (request, sender, sendResponse) {
+  if (request.key === "setting_setup") {
+    chrome.storage.local.get("settings", function (localData) {
+      if (localData.settings) {
+        sendResponse(localData.settings);
+      } else {
+        chrome.storage.sync.get("settings", function (syncData) {
+          if (syncData.settings) {
+            sendResponse(syncData.settings);
+          } else {
+            sendResponse(null);
+          }
+        });
+      }
+    });
+  }
+  return true; // Let sender keep the channel open until sendResponse is called
 });
