@@ -1,0 +1,7 @@
+old_version: v1.2.3
+version: v2.0.0
+build: build
+source: src
+github:
+  root: https://github.com/Crimx/BingDictPlus
+  content: tree/master/src

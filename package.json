@@ -1,0 +1,22 @@
+{
+  "name": "BingDictPlus",
+  "version": "2.0.0",
+  "description": "Chrome extension",
+  "author": "StrayBugs",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-crx-auto-reload": "^1.0.2",
+    "grunt-text-replace": "^0.3.12",
+    "matchdep": "^0.3.0",
+    "time-grunt": "^0.4.0"
+  }
+}
