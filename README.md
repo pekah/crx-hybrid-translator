@@ -9,29 +9,14 @@
 
 样子跟必应词典的划译基本一样，支持词典与机器翻译。
 
-鼠标取词还在写着，不定期更新。毕竟有了划译基本上就满足啦我很懒的~\(≧▽≦)/~
-
 ![必应词典+](https://raw.githubusercontent.com/Crimx/BingDictPlus/master/assets/Web%20Store/%E6%BB%9A%E5%8A%A8%E5%9B%BE%E7%89%87.png)
 
-Version
--------
+版本
+----
 
 1.3.0
 
--------
+开发状态
+--------
 
-- [x] FrameWork
-  - [x] Bing Dict APIs
-  - [x] Data Saving
-  - [x] Content Scripts Data Passing
-  - [x] Data Passing
-  - [x] Popup Panel
-    - [x] Search
-    - [x] Handle Chinese
-    - [x] Show Icon Before Translation
-    - [x] Speech
-    - [x] Bottom Links
- - [x] Inline Translator
-   - [x] Get Selected Word(s)
- - [ ] Cursor Translator
-   - [ ] Get Pointed Word
+2.0 版本正在开发中，1.0 版为了解 jQuery 的功能，所以会写得乱七八糟，现在重写。
