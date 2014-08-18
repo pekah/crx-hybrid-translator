@@ -52,18 +52,13 @@ module.exports = function(grunt) {
         files: ['<%= config.source %>/js/**'],
         tasks: ['clean:scripts', 'copy:jsToDest', 'crx_auto_reload', 'jshint']
       },
-      manifest: {
-        files: ['<%= config.source %>/manifest.json'],
-        tasks: ['replace:dev', 'crx_auto_reload']
-      },
       others: {
         files: [
           '<%= config.source %>/**',
-          '!<%= config.source %>/manifest.json',
           '!<%= config.source %>/js/**',
           '!<%= config.source %>/css/**'
         ],
-        tasks: ['copy:dev']
+        tasks: ['copy:dev', 'replace:dev', 'crx_auto_reload']
       }
     },
 
