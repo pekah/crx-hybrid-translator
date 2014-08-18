@@ -19,36 +19,51 @@ module.exports = function(grunt) {
       dev: {
         files: [{
           dot: true,
-          src: [
-            '<%= config.build %>/dev/*',
-            '!<%= config.build %>/.git*'
-          ]
+          src: '<%= config.build %>/dev/*'
         }]
       },
       // 发布时先清除 release 文件
       release: {
         files: [{
           dot: true,
-          src: [
-            '<%= config.build %>/release/*',
-            '!<%= config.build %>/.git*'
-          ]
+          src: '<%= config.build %>/release/*'
+        }]
+      },
+      scripts: {
+        files: [{
+          dot: true,
+          src: '<%= config.build %>/dev/js/*'
+        }]
+      },
+      styles: {
+        files: [{
+          dot: true,
+          src: '<%= config.build %>/dev/css/*'
         }]
       }
     },
 
     watch: {
       styles: {
-        files: ['<%= config.source %>/css/**/*.css'],
-        tasks: ['copy:cssToDest', 'crx_auto_reload']
+        files: ['<%= config.source %>/css/**'],
+        tasks: ['clean:styles', 'copy:cssToDest', 'crx_auto_reload']
       },
       scripts: {
-        files: ['<%= config.source %>/js/**/*.js'],
-        tasks: ['copy:jsToDest', 'crx_auto_reload', 'jshint']
+        files: ['<%= config.source %>/js/**'],
+        tasks: ['clean:scripts', 'copy:jsToDest', 'crx_auto_reload', 'jshint']
       },
       manifest: {
         files: ['<%= config.source %>/manifest.json'],
         tasks: ['replace:dev', 'crx_auto_reload']
+      },
+      others: {
+        files: [
+          '<%= config.source %>/**',
+          '!<%= config.source %>/manifest.json',
+          '!<%= config.source %>/js/**',
+          '!<%= config.source %>/css/**'
+        ],
+        tasks: ['copy:dev']
       }
     },
 
@@ -104,7 +119,7 @@ module.exports = function(grunt) {
     },
 
     // 自动重载扩展
-    crx_auto_reload: {
+    'crx_auto_reload': {
       options: {
         extensionDir: '<%= config.build %>/dev/'
       },
@@ -129,13 +144,21 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      options: {
-        jshintrc: '.jshintrc'
+      gruntfile: {
+        options: {
+          jshintrc: '.jshintrc'
+        },
+        src: ['Gruntfile.js']
       },
-      source: [
-        '<%= config.source %>/**/js/**/*.js',
-        '!<%= config.source %>/js/lib/**/*.js'
-      ]
+      others: {
+        options: {
+          jshintrc: '.jshintrc'
+        },
+        src: [
+          '<%= config.source %>/**/js/**/*.js',
+          '!<%= config.source %>/js/lib/**/*.js'
+        ]
+      }
     }
 
   });
@@ -146,6 +169,7 @@ module.exports = function(grunt) {
     'copy:dev', 
     'replace:dev', 
     'crx_auto_reload',
+    'jshint:gruntfile',
     'watch'
   ]);
 
