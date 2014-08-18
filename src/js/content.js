@@ -23,7 +23,6 @@
       frameDoc, // iframe document
       popIcon;
 
-
   // require settings
   chrome.runtime.sendMessage({'key': 'setting_setup'}, function (response) {
     if (response) {
@@ -46,11 +45,11 @@
   }
 
   function show(element) {
-    element.style.visibility = 'visible';
+    element.style.display = '';
     return element;
   }
   function hide(element) {
-    // element.style.visibility = 'hidden';
+    element.style.display = 'none';
     return element;
   }
 
@@ -71,8 +70,9 @@
   }, false);
 
   document.body.appendChild(hide(popIcon));
-  document.body.appendChild(hide(iFrame));
-  frameDoc = document.getElementById('crimxframe').contentWindow.document;
+  document.body.appendChild(show(iFrame));
+  iFrame = document.getElementById('crimxframe');
+  frameDoc = iFrame.contentWindow.document;
 
   // request frame.html
   var xhr = new XMLHttpRequest();
@@ -87,7 +87,11 @@
   function frameSetup(html) {
     frameDoc.head.innerHTML = '<link rel="stylesheet" type="text/css" href="' +
                                chrome.extension.getURL('css/frame.css') + '" />';
-    frameDoc.body.innerHTML = '<div>skjdjkfldjf</div>'; //html;
+    frameDoc.body.innerHTML = html;
+
+    frameDoc.getElementById('vpic').src = chrome.extension.getURL('images/voice.png');
+
+    iFrame.height = frameDoc.body.scrollHeight;
   }
   
 }(jQuery));
