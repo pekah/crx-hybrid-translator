@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         }]
       },
       release: {
-        src: ['README.md', '<%= config.source %>/manifest.json'],
+        src: ['README.md', '<%= config.source %>/manifest.json', 'package.json'],
         overwrite: true,
         replacements: [{
           from: '<%= config.old_version %>',

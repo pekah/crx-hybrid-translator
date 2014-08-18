@@ -13,25 +13,22 @@
 
 ![必应词典+](https://raw.githubusercontent.com/Crimx/BingDictPlus/master/assets/Web%20Store/%E6%BB%9A%E5%8A%A8%E5%9B%BE%E7%89%87.png)
 
-Version
--------
+版本
+----
 
-v2.0.0
+2.0.0
 
--------
+开发
+----
 
-- [ ] FrameWork
-  - [X] Bing Dict APIs
-  - [X] Data Saving
-  - [ ] Content Scripts Data Passing
-  - [X] Data Passing
-  - [ ] Popup Panel
-    - [ ] Search
-    - [ ] Handle Chinese
-    - [ ] Show Icon Before Translation
-    - [ ] Speech
-    - [ ] Bottom Links
- - [ ] Inline Translator
-   - [ ] Get Selected Word(s)
- - [ ] Cursor Translator
-   - [ ] Get Pointed Word
+- 安装 [node.js](http://nodejs.org/) 和 [npm](https://www.npmjs.org/)
+- 全局安装 [grunt-cli](http://gruntjs.com/getting-started) `npm install -g grunt-cli`
+- 根目录运行 `grunt`
+- Chrome 加载 `/build/dev/`
+- 在 `/src/` 下开发
+
+发布
+----
+
+- 修改 `_config-grunt.yml` 旧版本号、新版本号
+- 根目录运行 `grunt release` 会发布新版本在 `/build/release/`
