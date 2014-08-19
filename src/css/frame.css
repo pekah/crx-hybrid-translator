@@ -9,7 +9,7 @@
 #root {
   font-family: "Microsoft Yahei", Tahoma, "SimSun";
   color: #1a1a1a;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 #root a {
@@ -43,22 +43,32 @@ ul {
   background-color: #aaa;
   color: #fff;
   font-size: 0.9em;
-  line-height: 19px;
+  line-height: 18px;
   vertical-align: middle;
   text-align: center;
 }
 
 .def {
   float: left;
-  width: 239px;
-  margin: 0 0 10px 15px;
+  width: 238px;
+  margin: 0 0 10px 10px;
 }
 
 #hr {
   clear: both;
 }
 
-.web {
+#webpos {
   font-size: 0.8em;
   background-color: #333;
+}
+
+#machine {
+  clear: both;
+}
+
+#bottomlink {
+  text-align: right;
+  float: right;
+  width: 200;
 }
