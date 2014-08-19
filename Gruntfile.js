@@ -51,11 +51,9 @@ module.exports = function(grunt) {
     },
 
     connect: {
-      options: {
-        port: config.port
-      },
       livereload: {
         options: {
+          port: config.port,
           middleware: function(connect) {
             return [
               // 注入脚本到静态文件中
@@ -63,6 +61,9 @@ module.exports = function(grunt) {
               // 静态文件服务器的路径
               connect.static(config.base),
             ];
+          },
+          onCreateServer: function() {
+            grunt.event.emit('serverCreated');
           }
         }
       }
@@ -128,6 +129,9 @@ module.exports = function(grunt) {
 
     open: {
       test: {
+        options: {
+          openOn: 'serverCreated'
+        },
         path: 'http://localhost:<%= config.port %>/test.html'
       }
     },
@@ -204,7 +208,6 @@ module.exports = function(grunt) {
     'connect:livereload',
     'watch'
   ]);
-
 
   grunt.registerTask('release', [
     'replace:release',
