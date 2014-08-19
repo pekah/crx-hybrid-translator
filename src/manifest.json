@@ -24,10 +24,7 @@
   },
 
   "content_scripts": [ {
-    "js": [
-      "js/lib/jquery.min.js",
-      "js/content.js"
-    ],
+    "js": ["js/content.js"],
     "css": [ "css/content.css" ],
     "matches": [ "<all_urls>" ]
   } ],
