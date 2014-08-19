@@ -5,14 +5,21 @@
 
 module.exports = function(grunt) {
 
+  var LIVERELOAD_PORT = 35729;
+  // 生成 LiveReload 脚本
+  var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
+
   // 加载所有任务
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
   require('time-grunt')(grunt); // 记录用时
 
+  // 项目配置
+  var config = grunt.file.readYAML('_config-grunt.yml');
+
   // 任务配置
   grunt.initConfig({
 
-    config: grunt.file.readYAML('_config-grunt.yml'),
+    config: config,
 
     clean: {
       // 清除 dev 文件
@@ -43,41 +50,21 @@ module.exports = function(grunt) {
       }
     },
 
-    watch: {
-      styles: {
-        files: ['<%= config.source %>/css/**'],
-        tasks: ['clean:styles', 'copy:cssToDest', 'crx_auto_reload']
+    connect: {
+      options: {
+        port: config.port
       },
-      scripts: {
-        files: ['<%= config.source %>/js/**'],
-        tasks: ['clean:scripts', 'copy:jsToDest', 'crx_auto_reload', 'jshint']
-      },
-      others: {
-        files: [
-          '<%= config.source %>/**',
-          '!<%= config.source %>/js/**',
-          '!<%= config.source %>/css/**'
-        ],
-        tasks: ['copy:dev', 'replace:dev', 'crx_auto_reload']
-      }
-    },
-
-    replace: {
-      dev: {
-        src: '<%= config.source %>/manifest.json',
-        dest: '<%= config.build %>/dev/',
-        replacements: [{
-          from: 'background.js"',
-          to: 'background.js", "reload.js"'
-        }]
-      },
-      release: {
-        src: ['README.md', '<%= config.source %>/manifest.json', 'package.json'],
-        overwrite: true,
-        replacements: [{
-          from: '<%= config.old_version %>',
-          to: '<%= config.version %>'
-        }]
+      livereload: {
+        options: {
+          middleware: function(connect) {
+            return [
+              // 注入脚本到静态文件中
+              lrSnippet,
+              // 静态文件服务器的路径
+              connect.static(config.base),
+            ];
+          }
+        }
       }
     },
 
@@ -121,6 +108,49 @@ module.exports = function(grunt) {
       default: {}
     },
 
+    jshint: {
+      gruntfile: {
+        options: {
+          jshintrc: '.jshintrc'
+        },
+        src: ['Gruntfile.js']
+      },
+      others: {
+        options: {
+          jshintrc: '.jshintrc'
+        },
+        src: [
+          '<%= config.source %>/**/js/**/*.js',
+          '!<%= config.source %>/js/lib/**/*.js'
+        ]
+      }
+    },
+
+    open: {
+      test: {
+        path: 'http://localhost:<%= config.port %>/test.html'
+      }
+    },
+
+    replace: {
+      dev: {
+        src: '<%= config.source %>/manifest.json',
+        dest: '<%= config.build %>/dev/',
+        replacements: [{
+          from: 'background.js"',
+          to: 'background.js", "reload.js"'
+        }]
+      },
+      release: {
+        src: ['README.md', '<%= config.source %>/manifest.json', 'package.json'],
+        overwrite: true,
+        replacements: [{
+          from: '<%= config.old_version %>',
+          to: '<%= config.version %>'
+        }]
+      }
+    },
+
     uglify: {
       release: {
         options: {
@@ -138,21 +168,26 @@ module.exports = function(grunt) {
       }
     },
 
-    jshint: {
-      gruntfile: {
-        options: {
-          jshintrc: '.jshintrc'
-        },
-        src: ['Gruntfile.js']
+    watch: {
+      options: {
+        // Start a live reload server on the default port 35729
+        livereload: LIVERELOAD_PORT
+      },
+      styles: {
+        files: ['<%= config.source %>/css/**'],
+        tasks: ['clean:styles', 'copy:cssToDest', 'crx_auto_reload']
+      },
+      scripts: {
+        files: ['<%= config.source %>/js/**'],
+        tasks: ['clean:scripts', 'copy:jsToDest', 'crx_auto_reload', 'jshint']
       },
       others: {
-        options: {
-          jshintrc: '.jshintrc'
-        },
-        src: [
-          '<%= config.source %>/**/js/**/*.js',
-          '!<%= config.source %>/js/lib/**/*.js'
-        ]
+        files: [
+          '<%= config.source %>/**',
+          '!<%= config.source %>/js/**',
+          '!<%= config.source %>/css/**'
+        ],
+        tasks: ['copy:dev', 'replace:dev', 'crx_auto_reload']
       }
     }
 
@@ -162,9 +197,11 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'clean:dev', 
     'copy:dev', 
-    'replace:dev', 
+    'replace:dev',
     'crx_auto_reload',
     'jshint:gruntfile',
+    'open:test',
+    'connect:livereload',
     'watch'
   ]);
 
