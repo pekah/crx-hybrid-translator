@@ -82,7 +82,7 @@ module.exports = function(grunt) {
         expand: true,
         nonull: true,
         cwd: '<%= config.source %>/',
-        src: '**',
+        src: ['**', '!assets/'],
         dest: '<%= config.build %>/release/'
       },
       jsToDest: {
@@ -184,6 +184,9 @@ module.exports = function(grunt) {
       scripts: {
         files: ['<%= config.source %>/js/**'],
         tasks: ['clean:scripts', 'copy:jsToDest', 'crx_auto_reload', 'jshint']
+      },
+      test: {
+        files: ['site/**']
       },
       others: {
         files: [
