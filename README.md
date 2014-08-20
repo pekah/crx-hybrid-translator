@@ -1,7 +1,7 @@
 必应词典+
 =========
 
-<a target="_blank" href="https://chrome.google.com/webstore/detail/kkgcfdmlnfpdjmnheeojdlgpmhaeekga">![Try it now in CWS](https://raw.githubusercontent.com/Crimx/BingDictPlus/master/assets/images/tryitnow.png "Click here to install this sample from the Chrome Web Store")</a>
+<a target="_blank" href="https://chrome.google.com/webstore/detail/kkgcfdmlnfpdjmnheeojdlgpmhaeekga">![Try it now in CWS](https://raw.githubusercontent.com/Crimx/BingDictPlus/master/src/assets/images/tryitnow.png "Click here to install this sample from the Chrome Web Store")</a>
 
 做了个小 chrome 扩展来学习 jQuery！
 
@@ -9,7 +9,7 @@
 
 样子跟必应词典的划译基本一样，支持词典与机器翻译。
 
-![必应词典+](https://raw.githubusercontent.com/Crimx/BingDictPlus/master/assets/Web%20Store/%E6%BB%9A%E5%8A%A8%E5%9B%BE%E7%89%87.png)
+![必应词典+](https://raw.githubusercontent.com/Crimx/BingDictPlus/master/src/assets/Web%20Store/%E6%BB%9A%E5%8A%A8%E5%9B%BE%E7%89%87.png)
 
 版本
 ----
@@ -24,9 +24,3 @@
 - 根目录运行 `grunt`
 - Chrome 加载 `/build/dev/`
 - 在 `/src/` 下开发
-
-发布
-----
-
-- 修改 `_config-grunt.yml` 旧版本号、新版本号
-- 根目录运行 `grunt release` 会发布新版本在 `/build/release/`
