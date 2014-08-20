@@ -14,9 +14,19 @@
 版本
 ----
 
-1.3.0
+2.0.1
 
-开发状态
---------
+开发
+----
 
-2.0 版本正在开发中，1.0 版为了解 jQuery 的功能，所以会写得乱七八糟，现在重写。
+- 安装 [node.js](http://nodejs.org/) 和 [npm](https://www.npmjs.org/)
+- 全局安装 [grunt-cli](http://gruntjs.com/getting-started) `npm install -g grunt-cli`
+- 根目录运行 `grunt`
+- Chrome 加载 `/build/dev/`
+- 在 `/src/` 下开发
+
+发布
+----
+
+- 修改 `_config-grunt.yml` 旧版本号、新版本号
+- 根目录运行 `grunt release` 会发布新版本在 `/build/release/`
