@@ -3,8 +3,6 @@
 
 <a target="_blank" href="https://chrome.google.com/webstore/detail/kkgcfdmlnfpdjmnheeojdlgpmhaeekga">![Try it now in CWS](https://raw.githubusercontent.com/Crimx/BingDictPlus/master/src/assets/images/tryitnow.png "Click here to install this sample from the Chrome Web Store")</a>
 
-做了个小 chrome 扩展来学习 jQuery！
-
 必应词典对专业词汇翻译的准确度不错，所以弄到 chrome 上，这样在其它平台也可以用啦。
 
 样子跟必应词典的划译基本一样，支持词典与机器翻译。
@@ -20,7 +18,19 @@
 ----
 
 - 安装 [node.js](http://nodejs.org/) 和 [npm](https://www.npmjs.org/)
-- 全局安装 [grunt-cli](http://gruntjs.com/getting-started) `npm install -g grunt-cli`
-- 根目录运行 `grunt`
+- 全局安装 [grunt-cli](http://gruntjs.com/getting-started)
+
+  ```
+  npm install -g grunt-cli
+  ```
+      
+- 项目根目录运行
+  
+  ```
+  npm install
+  
+  grunt
+  ```
+
 - Chrome 加载 `/build/dev/`
 - 在 `/src/` 下开发
