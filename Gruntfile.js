@@ -82,7 +82,7 @@ module.exports = function(grunt) {
         expand: true,
         nonull: true,
         cwd: '<%= config.source %>/',
-        src: ['**', '!assets/'],
+        src: ['**', '!assets/**'],
         dest: '<%= config.build %>/release/'
       },
       jsToDest: {
