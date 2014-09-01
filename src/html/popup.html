@@ -4,35 +4,44 @@
   <meta charset="utf-8">
   <style type="text/css">
     body {
-      overflow:hidden;
+      overflow: hidden;
       font-family: "Microsoft Yahei",Tahoma,"SimSun";
       font-size: 14px;
     }
   </style>
-  <script type="text/javascript" src="/js/lib/jquery.min.js"> </script> 
+  <script type="text/javascript" src="/js/lib/jquery.min.js"> </script>
+  <script type="text/javascript" src="/js/lib/handlebars-v1.3.0.js"> </script> 
 </head>
 <body>
-  <div id="logo">
+
+  <header>
     <img src="/images/logo.png" alt="LOGO" />
-  </div>
-  <div id="inline_setting">
-    <h3 class="chromsg" id="inline_title"></h3>
-    <input type="checkbox" id="inlineEnabledBox" class="settings install" /><span class="chromsg" id="inline_enabled"></span>
-  </div>
-  <div id="other_setting">
-    <h3 class="chromsg" id="other_title"></h3>
-    <dl>
-      <dt>
-        <input type="checkbox" id="transChineseBox" class="settings install" /><span class="chromsg" id="trans_chinese"></span>
-      </dt>
-      <dt>
-        <input type="checkbox" id="transIconBox" class="settings install" /><span class="chromsg" id="trans_icon"></span>
-      </dt>
-      <dt>
-        <input type="checkbox" id="transAutoplayBox" class="settings" /><span class="chromsg" id="trans_autoplay"></span>
-      </dt>
-    </dl>
-  </div>
+  </header>
+
+  <script id="entry-template" type="text/x-handlebars-template">
+    <form>
+      <fieldset>
+        <legend>{{ inline.title }}</legend>
+
+        <input type="checkbox" id="inlineEnabledBox" class="install" />
+        <label for="inlineEnabledBox">{{ inline.enabledBox }}</label>
+
+        <input type="checkbox" id="transIconBox" class="install" />
+        <label for="transIconBox">{{ inline.iconBox }}</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>{{ other.title }}</legend>
+
+        <input type="checkbox" id="transChineseBox" class="install" />
+        <label for="transChineseBox">{{ other.chineseBox }}</label>
+
+        <input type="checkbox" id="transAutoplayBox" />
+        <label for="transAutoplayBox">{{ other.autoplayBox }}</label>
+      </fieldset>
+    </form>
+  </script>
+  
   <script type="text/javascript" src="/js/popup.js"></script>
 </body>
 </html>
