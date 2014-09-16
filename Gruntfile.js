@@ -98,6 +98,12 @@ module.exports = function(grunt) {
         cwd: '<%= config.source %>/css/',
         src: '**/*.css',
         dest: '<%= config.build %>/dev/css/'
+      },
+      seaModuleToDest: {
+        expand: true,
+        nonull: true,
+        src: 'sea-modules/**/*debug.js',
+        dest: '<%= config.build %>/dev/js/lib/'
       }
     },
 
@@ -183,7 +189,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['<%= config.source %>/js/**'],
-        tasks: ['clean:scripts', 'copy:jsToDest', 'crx_auto_reload', 'jshint']
+        tasks: ['clean:scripts', 'copy:jsToDest', 'copy:seaModuleToDest', 'crx_auto_reload', 'jshint']
       },
       test: {
         files: ['site/**']
@@ -203,7 +209,8 @@ module.exports = function(grunt) {
   // Default task
   grunt.registerTask('default', [
     'clean:dev', 
-    'copy:dev', 
+    'copy:dev',
+    'copy:seaModuleToDest',
     'replace:dev',
     'crx_auto_reload',
     'jshint:gruntfile',

@@ -81,6 +81,9 @@
 
 
 		"jQuery": true,
-		"chrome": true
+		"chrome": true,
+
+		"seajs": true,
+		"define": true
 	}
 }
