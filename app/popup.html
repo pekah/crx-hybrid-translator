@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./css/popup.css" />
+</head>
+<body>
+
+  <header>
+    <img src="./images/logo.png" alt="LOGO" />
+  </header>
+
+ 
+  <form>
+    <fieldset>
+      <legend>{{ title }}</legend>
+      <div class="options">
+        <input type="checkbox" id="inlineEnabledBox" class="install" />
+        <label for="inlineEnabledBox">{{ enabledBox }}</label>
+      </div>
+
+      <div class="options">
+        <input type="checkbox" id="transIconBox" class="install" />
+        <label for="transIconBox">{{ iconBox }}</label>
+      </div>
+
+    </fieldset>
+
+    <fieldset>
+      <legend>{{ title }}</legend>
+      <div class="options">
+        <input type="checkbox" id="transChineseBox" class="install" />
+        <label for="transChineseBox">{{ chineseBox }}</label>
+      </div>
+
+      <div class="options">
+        <input type="checkbox" id="transAutoplayBox" />
+        <label for="transAutoplayBox">{{ autoplayBox }}</label>
+      </div>
+
+    </fieldset>
+  </form>
+
+  
+  <script src="./js/popup.js"></script>
+</body>
+</html>

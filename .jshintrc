@@ -1,89 +1,69 @@
 {
+  "bitwise"   : true,
+  "camelcase" : true,
+  "curly"     : true,
+  "eqeqeq"    : true,
+  "forin"     : false,
+  "immed"     : true,
+  "indent"    : 2,
+  "latedef"   : true,
+  "newcap"    : true,
+  "noarg"     : true,
+  "noempty"   : true,
+  "nonew"     : true,
+  "plusplus"  : false,
+  "quotmark"  : "single",
+  "strict"    : true,
+  "trailing"  : true,
+  "undef"     : true,
+  "unused"    : false,
 
+  "asi"          : true,
+  "boss"         : false,
+  "debug"        : false,
+  "eqnull"       : false,
+  "esnext"       : false,
+  "evil"         : false,
+  "expr"         : false,
+  "funcscope"    : false,
+  "globalstrict" : true,
+  "iterator"     : false,
+  "lastsemic"    : false,
+  "laxbreak"     : false,
+  "laxcomma"     : true,
+  "loopfunc"     : false,
+  "multistr"     : false,
+  "proto"        : false,
+  "scripturl"    : false,
+  "shadow"       : false,
+  "smarttabs"    : false,
+  "sub"          : false,
+  "supernew"     : false,
+  "validthis"    : false,
 
-	"bitwise": true,
-	"camelcase": true,
-	"curly": true,
-	"eqeqeq": true,
-	"forin": false,
-	"immed": true,
-	"indent": 2,
-	"latedef": true,
-	"newcap": true,
-	"noarg": true,
-	"noempty": true,
-	"nonew": true,
-	"plusplus": false,
-	"quotmark": "single",
-	"undef": true,
-	"unused": false,
-	"strict": true,
-	"trailing": true,
+  "nomen"  : false,
+  "onevar" : false,
+  "white"  : false,
 
+  "browser"     : true,
+  "devel"       : true,
+  "node"        : false,
+  "nonstandard" : false,
 
-
-
-
-
-
-
-
-	"asi": false,
-	"boss": false,
-	"debug": false,
-	"eqnull": false,
-	"esnext": false,
-	"evil": false,
-	"expr": false,
-	"funcscope": false,
-	"globalstrict": false,
-	"iterator": false,
-	"lastsemic": false,
-	"laxbreak": false,
-	"laxcomma": false,
-	"loopfunc": false,
-	"multistr": false,
-	"proto": false,
-	"scripturl": false,
-	"smarttabs": false,
-	"shadow": false,
-	"sub": false,
-	"supernew": false,
-	"validthis": false,
-
-
-
-
-	"nomen": false,
-	"onevar": false,
-	"white": false,
-
-
-
-
-
-	"browser": true,
-	"devel": true,
-	"node": false,
-	"nonstandard": false,
-	"globals": {
-		"angular": false,
-
-		"describe": false,
-		"beforeEach": false,
-		"it": false,
-		"expect": false,
-		"module": false,
-		"inject": false,
-
-		"browser": false,
-		"element": false,
-
-
-		"jQuery": true,
-		"chrome": true,
-
-		"seajs": true,
-		"define": true
-	}
+  "globals": {
+    "angular"    : true,
+    "beforeEach" : false,
+    "browser"    : false,
+    "chrome"     : true,
+    "define"     : true,
+    "describe"   : false,
+    "element"    : false,
+    "expect"     : false,
+    "inject"     : false,
+    "it"         : false,
+    "jQuery"     : true,
+    "module"     : true,
+    "require"    : true,
+    "seajs"      : false
+  }
 }
