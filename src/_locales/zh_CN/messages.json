@@ -1,17 +1,17 @@
 {
    "extension_name": {
       "description": "Extension name",
-      "message": "必应词典+"
+      "message": "多词典翻译"
    },
 
    "extension_short_name": {
       "description": "Extension short name",
-      "message": "划词翻译"
+      "message": "多词"
    },
 
    "extension_description": {
       "description": "Description of extension",
-      "message": "划词翻译，非官方，基于必应词典，专业词汇的好帮手"
+      "message": "多个词典一起查，低调使用，嘘~~"
    },
 
    "inline_title": {
