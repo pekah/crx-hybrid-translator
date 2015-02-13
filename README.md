@@ -3,9 +3,9 @@
 
 <a target="_blank" href="https://chrome.google.com/webstore/detail/kkgcfdmlnfpdjmnheeojdlgpmhaeekga">![Try it now in CWS](https://raw.githubusercontent.com/Crimx/hybrid-translator/master/assets/images/tryitnow.png "Click here to install this sample from the Chrome Web Store")</a>
 
-必应词典+ 改名为多词典翻译，加入更多的词典混合在一起，低调使用，嘘~~。
+必应词典+ 改名为多词典翻译，将加入更多的词典，仅做编程技术交流，请低调使用，嘘~~。
 
-![logo](https://raw.githubusercontent.com/Crimx/BingDictPlus/master/assets/Web%20Store/%E6%BB%9A%E5%8A%A8%E5%9B%BE%E7%89%87.png)
+![logo](./assers/web-sotre/small.png)
 
 版本
 ----
