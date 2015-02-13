@@ -5,7 +5,7 @@
 
 必应词典+ 改名为多词典翻译，将加入更多的词典，仅做编程技术交流，请低调使用，嘘~~。
 
-![logo](./assers/web-sotre/small.png)
+![logo](./assets/web-store/small.png)
 
 版本
 ----
