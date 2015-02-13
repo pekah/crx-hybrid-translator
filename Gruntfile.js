@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 
   // 项目配置
   var config = grunt.file.readYAML('_config-grunt.yml');
+  var FILE_BANNER = '/*!\n * Jesse Wong\n * @straybugs\n * https://github.com/Crimx/hybrid-translator\n * MIT Licensed\n */\n\n';
 
   // 任务配置
   grunt.initConfig({
@@ -50,6 +51,17 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: {
+      jsbackground: {
+        options: {
+          stripBanners: true,
+          banner: FILE_BANNER
+        },
+        src: '<%= config.source %>/js/background/**/*.js',
+        dest: '<%= config.build %>/dev/js/background.js'
+      }
+    },
+
     connect: {
       livereload: {
         options: {
@@ -75,21 +87,24 @@ module.exports = function(grunt) {
         expand: true,
         nonull: true,
         cwd: '<%= config.source %>/',
-        src: '**',
+        src: [
+          '**',
+          '!js/**'
+        ],
         dest: '<%= config.build %>/dev/'
       },
       release: {
         expand: true,
         nonull: true,
         cwd: '<%= config.source %>/',
-        src: ['**', '!assets/**'],
+        src: ['**', '!assets/'],
         dest: '<%= config.build %>/release/'
       },
       jsToDest: {
         expand: true,
         nonull: true,
         cwd: '<%= config.source %>/js/',
-        src: '**/*.js',
+        src: '**.js',
         dest: '<%= config.build %>/dev/js/'
       },
       cssToDest: {
@@ -98,12 +113,6 @@ module.exports = function(grunt) {
         cwd: '<%= config.source %>/css/',
         src: '**/*.css',
         dest: '<%= config.build %>/dev/css/'
-      },
-      seaModuleToDest: {
-        expand: true,
-        nonull: true,
-        src: 'sea-modules/**/*debug.js',
-        dest: '<%= config.build %>/dev/js/lib/'
       }
     },
 
@@ -117,19 +126,10 @@ module.exports = function(grunt) {
 
     jshint: {
       gruntfile: {
-        options: {
-          jshintrc: '.jshintrc'
-        },
         src: ['Gruntfile.js']
       },
       others: {
-        options: {
-          jshintrc: '.jshintrc'
-        },
-        src: [
-          '<%= config.source %>/**/js/**/*.js',
-          '!<%= config.source %>/js/lib/**/*.js'
-        ]
+        src: ['<%= config.source %>/js/**/*.js']
       }
     },
 
@@ -189,7 +189,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['<%= config.source %>/js/**'],
-        tasks: ['clean:scripts', 'copy:jsToDest', 'copy:seaModuleToDest', 'crx_auto_reload', 'jshint']
+        tasks: ['clean:scripts', 'copy:jsToDest', 'concat', 'crx_auto_reload', 'jshint']
       },
       test: {
         files: ['site/**']
@@ -210,7 +210,8 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'clean:dev', 
     'copy:dev',
-    'copy:seaModuleToDest',
+    'copy:jsToDest',
+    'concat',
     'replace:dev',
     'crx_auto_reload',
     'jshint:gruntfile',
@@ -227,7 +228,3 @@ module.exports = function(grunt) {
   ]);
 
 };
-
-
-
-
