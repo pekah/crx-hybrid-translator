@@ -30,7 +30,7 @@
   } ],
 
   "web_accessible_resources": [
-    "images/popup-icon.png" , "images/voice.png",
+    "images/icon-24.png" , "images/voice.png",
     "html/frame.html", "css/frame.css"
     ],
 
