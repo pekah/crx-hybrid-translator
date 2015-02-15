@@ -5,7 +5,7 @@
  * MIT Licensed
  */
 
-
+// Simple Promise GET XMLHttpRequest
 function $get(url) {
   'use strict';
   return new Promise(function (resolve, reject) {

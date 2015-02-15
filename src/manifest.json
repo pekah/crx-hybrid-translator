@@ -31,7 +31,7 @@
 
   "web_accessible_resources": [
     "images/icon-24.png" , "images/voice.png",
-    "html/frame.html", "css/frame.css"
+    "html/content.html"
     ],
 
   "browser_action": {
