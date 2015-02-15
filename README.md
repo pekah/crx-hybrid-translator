@@ -3,6 +3,8 @@
 
 <a target="_blank" href="https://chrome.google.com/webstore/detail/kkgcfdmlnfpdjmnheeojdlgpmhaeekga">![Try it now in CWS](https://raw.githubusercontent.com/Crimx/hybrid-translator/master/assets/images/tryitnow.png "Click here to install this sample from the Chrome Web Store")</a>
 
+Chrome 扩展，网页划词翻译。
+
 必应词典+ 改名为多词典翻译，将加入更多的词典，仅做编程技术交流，请低调使用，嘘~~。
 
 ![logo](./assets/web-store/small.png)
