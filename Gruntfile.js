@@ -138,7 +138,7 @@ module.exports = function(grunt) {
         options: {
           openOn: 'serverCreated'
         },
-        path: 'http://localhost:<%= config.port %>/test.html'
+        path: 'http://localhost:<%= config.port %>/example.html'
       }
     },
 

@@ -1,0 +1,831 @@
+{
+  "LEX": {
+    "C_DEF": [{
+      "DEF": "爱$$喜欢$$热爱$$相爱$$想$$愿意$$(两性间)爱慕$$爱戴$$眷恋$$热衷于$$赞美$$(俗)喜好$$称赞$$攀$$热切地$$热心于$$叫…钟情$$有…的倾向〔口语〕欢喜,爱好$$以仁爱对待:$$喜欢:$$敬拜:",
+      "POS": "v",
+      "SEN": [{
+        "CONTEXT": null,
+        "D": "爱,相爱,眷恋;叫…钟情",
+        "R": 0,
+        "STS": [{
+          "DATE": "\/Date(1336460400000-0700)\/",
+          "ID": 0,
+          "ORAL": false,
+          "R": 0,
+          "READ": 0,
+          "S": {
+            "AD": null,
+            "COL": null,
+            "D": "She was too deliriously happy to speak, and the only words she could have said were, \"I love you, I love you!\"",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "T": {
+            "AD": null,
+            "COL": null,
+            "D": "她欢欣若狂,说不出来,唯一能讲出的几个字就是“我爱你,我爱你!”",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "TECH": false,
+          "TITLE": false,
+          "WA": 0,
+          "WAD": null
+        }],
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "爱,热爱;爱戴",
+        "R": 0,
+        "STS": [{
+          "DATE": "\/Date(1336460400000-0700)\/",
+          "ID": 0,
+          "ORAL": false,
+          "R": 0,
+          "READ": 0,
+          "S": {
+            "AD": null,
+            "COL": null,
+            "D": "They love labour and help one another.",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "T": {
+            "AD": null,
+            "COL": null,
+            "D": "他们热爱劳动,互相帮助。",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "TECH": false,
+          "TITLE": false,
+          "WA": 0,
+          "WAD": null
+        }],
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "有…的倾向〔口语〕欢喜,爱好",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "(两性间)爱慕",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "以仁爱对待:",
+        "R": 0,
+        "STS": [{
+          "DATE": "\/Date(1336460400000-0700)\/",
+          "ID": 0,
+          "ORAL": false,
+          "R": 0,
+          "READ": 0,
+          "S": {
+            "AD": null,
+            "COL": null,
+            "D": "The Bible tells us to love all men.",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "T": {
+            "AD": null,
+            "COL": null,
+            "D": "圣经告诉我们要爱所有的人。",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "TECH": false,
+          "TITLE": false,
+          "WA": 0,
+          "WAD": null
+        }],
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "想;攀;喜欢;愿意;热衷于",
+        "R": 0,
+        "STS": [{
+          "DATE": "\/Date(1336460400000-0700)\/",
+          "ID": 0,
+          "ORAL": false,
+          "R": 0,
+          "READ": 0,
+          "S": {
+            "AD": null,
+            "COL": null,
+            "D": "How I should love to have had a son-yes, even a little son no bigger than my husbands thumb.",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "T": {
+            "AD": null,
+            "COL": null,
+            "D": "我多么想有个儿子呀,真的,哪怕有个象我丈夫大姆指那样的儿子也好啊。",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "TECH": false,
+          "TITLE": false,
+          "WA": 0,
+          "WAD": null
+        }],
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "(俗)喜好;喜欢:",
+        "R": 0,
+        "STS": [{
+          "DATE": "\/Date(1336460400000-0700)\/",
+          "ID": 0,
+          "ORAL": false,
+          "R": 0,
+          "READ": 0,
+          "S": {
+            "AD": null,
+            "COL": null,
+            "D": "We all love comfort.",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "T": {
+            "AD": null,
+            "COL": null,
+            "D": "我们都喜欢舒适。",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "TECH": false,
+          "TITLE": false,
+          "WA": 0,
+          "WAD": null
+        }],
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "热心于;热切地",
+        "R": 0,
+        "STS": [{
+          "DATE": "\/Date(1336460400000-0700)\/",
+          "ID": 0,
+          "ORAL": false,
+          "R": 0,
+          "READ": 0,
+          "S": {
+            "AD": null,
+            "COL": null,
+            "D": "My father loved to build up Montaigne, where he was born.",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "T": {
+            "AD": null,
+            "COL": null,
+            "D": "我先父热心于建设他的出生地蒙田。",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "TECH": false,
+          "TITLE": false,
+          "WA": 0,
+          "WAD": null
+        }],
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "赞美,称赞",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "敬拜:",
+        "R": 0,
+        "STS": [{
+          "DATE": "\/Date(1336460400000-0700)\/",
+          "ID": 0,
+          "ORAL": false,
+          "R": 0,
+          "READ": 0,
+          "S": {
+            "AD": null,
+            "COL": null,
+            "D": "The Christians love God.",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "T": {
+            "AD": null,
+            "COL": null,
+            "D": "基督教徒敬拜神(上帝)。",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "TECH": false,
+          "TITLE": false,
+          "WA": 0,
+          "WAD": null
+        }],
+        "URL": null
+      }]
+    }, {
+      "DEF": "爱$$爱情$$热爱$$(两性间的)恋爱$$爱人$$爱人〔尤指女性,意中人〕$$爱好$$爱慕$$爱戴$$钟爱$$宝贝$$仁爱$$爱神$$心疼$$所爱的东西$$〔口语〕可爱的人$$爱的化身$$性关系$$可爱的东西$$【体育】零分",
+      "POS": "n",
+      "SEN": [{
+        "CONTEXT": null,
+        "D": "(两性间的)恋爱;爱情",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "爱,热爱,钟爱,爱慕;仁爱;心疼",
+        "R": 0,
+        "STS": [{
+          "DATE": "\/Date(1336460400000-0700)\/",
+          "ID": 0,
+          "ORAL": false,
+          "R": 0,
+          "READ": 0,
+          "S": {
+            "AD": null,
+            "COL": null,
+            "D": "I have no feelings of love left in me.",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "T": {
+            "AD": null,
+            "COL": null,
+            "D": "爱,这种感情我一点也没有了。",
+            "IME": null,
+            "M": 0,
+            "SIG": null,
+            "TG": null,
+            "URL": null,
+            "W": null
+          },
+          "TECH": false,
+          "TITLE": false,
+          "WA": 0,
+          "WAD": null
+        }],
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "爱,热爱,爱戴",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "爱人,宝贝",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "爱人〔尤指女性,意中人〕",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "爱好;所爱的东西",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "〔口语〕可爱的人;可爱的东西",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "爱的化身,爱神",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "性关系",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "【体育】零分",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }]
+    }, {
+      "DEF": null,
+      "POS": "web",
+      "SEN": [{
+        "CONTEXT": null,
+        "D": "爱",
+        "R": 35037,
+        "STS": null,
+        "URL": "http:\/\/tieba.baidu.com\/f?kw=sistar"
+      }, {
+        "CONTEXT": null,
+        "D": "爱情",
+        "R": 17722,
+        "STS": null,
+        "URL": "http:\/\/blog.yam.com\/diqauouzjmtuat"
+      }, {
+        "CONTEXT": null,
+        "D": "爱心",
+        "R": 9405,
+        "STS": null,
+        "URL": "http:\/\/baike.baidu.com\/view\/3130893.htm"
+      }, {
+        "CONTEXT": null,
+        "D": "真爱",
+        "R": 1754,
+        "STS": null,
+        "URL": "http:\/\/www.xingzuo360.cn\/huayu\/gzhy\/39123.html"
+      }, {
+        "CONTEXT": null,
+        "D": "喜爱",
+        "R": 1706,
+        "STS": null,
+        "URL": "http:\/\/wenku.baidu.com\/view\/17275e1252d380eb62946d48.html"
+      }, {
+        "CONTEXT": null,
+        "D": "热爱",
+        "R": 1627,
+        "STS": null,
+        "URL": "http:\/\/www.yingyu.com\/e\/20090216\/4b8bc97e7e952.shtml"
+      }, {
+        "CONTEXT": null,
+        "D": "喜欢",
+        "R": 1160,
+        "STS": null,
+        "URL": "http:\/\/word.langfly.com\/a\/20120318\/214932.shtml"
+      }]
+    }],
+    "HW": {
+      "DEF": "爱$$爱情$$喜欢$$热爱$$(两性间的)恋爱$$相爱$$想$$爱人$$爱人〔尤指女性,意中人〕$$愿意$$爱好$$爱慕$$(两性间)爱慕$$爱戴$$钟爱$$宝贝$$仁爱$$爱神$$眷恋$$热衷于$$赞美$$(俗)喜好$$心疼$$称赞$$所爱的东西$$〔口语〕可爱的人$$攀$$热切地$$爱的化身$$热心于$$性关系$$叫…钟情$$有…的倾向〔口语〕欢喜,爱好$$可爱的东西$$以仁爱对待:$$喜欢:$$敬拜:$$【体育】零分",
+      "SIG": "D86CEAEFA3504E6E1368552B058AD528",
+      "V": "love"
+    },
+    "H_DEF": [{
+      "DEF": null,
+      "POS": "v",
+      "SEN": [{
+        "CONTEXT": null,
+        "D": "to feel tender affection for somebody such as a close relative or friend, or for something such as a place, an ideal, or an animal",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "to feel romantic and sexual desire and longing for somebody",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "to like something, or like doing, something very much",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "to feel and show kindness and charity to somebody",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "to have sexual intercourse with somebody",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "to worship and venerate God",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "to be very strongly attracted to someone in an emotional and sexual way",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "to care very much about someone, especially members of your family or close friends",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "have strong affection or deep tender feelings for",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "(colloq.)be very fond of;like;find pleasure in",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }]
+    }, {
+      "DEF": null,
+      "POS": "n",
+      "SEN": [{
+        "CONTEXT": null,
+        "D": "a passionate feeling of romantic desire and sexual attraction",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "an intense feeling of tender affection and compassion",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "a romantic affair, possibly sexual",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "somebody who is loved romantically or sexually",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "a strong liking for or pleasure gained from something",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "something that elicits deep interest and enthusiasm in somebody",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "used as an affectionate word to somebody loved",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "used as a friendly term of address, usually to a woman",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "in Christian belief, the mercy, grace, and charity shown by God to humanity",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }, {
+        "CONTEXT": null,
+        "D": "in Christian belief, the worship and adoration of God",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }]
+    }],
+    "IMGS": null,
+    "INF": [{
+      "IE": "love",
+      "T": "s"
+    }, {
+      "IE": "loves",
+      "T": "pl"
+    }, {
+      "IE": "loved",
+      "T": "pp"
+    }, {
+      "IE": "loving",
+      "T": "prp"
+    }, {
+      "IE": "loves",
+      "T": "3pps"
+    }, {
+      "IE": "loves",
+      "T": "prt"
+    }, {
+      "IE": "loved",
+      "T": "pt"
+    }],
+    "LCS": [{
+      "LC": [{
+        "T1": "true",
+        "T2": "love"
+      }, {
+        "T1": "deep",
+        "T2": "love"
+      }, {
+        "T1": "pure",
+        "T2": "love"
+      }, {
+        "T1": "everlasting",
+        "T2": "love"
+      }, {
+        "T1": "unrequited",
+        "T2": "love"
+      }, {
+        "T1": "young",
+        "T2": "love"
+      }, {
+        "T1": "secret",
+        "T2": "love"
+      }, {
+        "T1": "tender",
+        "T2": "love"
+      }, {
+        "T1": "undying",
+        "T2": "love"
+      }, {
+        "T1": "love",
+        "T2": "child"
+      }, {
+        "T1": "mutual",
+        "T2": "love"
+      }, {
+        "T1": "letter",
+        "T2": "love"
+      }],
+      "RELA": "adj.+n."
+    }, {
+      "LC": [{
+        "T1": "really",
+        "T2": "love"
+      }, {
+        "T1": "dearly",
+        "T2": "love"
+      }, {
+        "T1": "love",
+        "T2": "tenderly"
+      }, {
+        "T1": "deeply",
+        "T2": "love"
+      }],
+      "RELA": "adv.+v."
+    }, {
+      "LC": [{
+        "T1": "find",
+        "T2": "love"
+      }, {
+        "T1": "love",
+        "T2": "woman"
+      }, {
+        "T1": "send",
+        "T2": "love"
+      }, {
+        "T1": "inspire",
+        "T2": "love"
+      }],
+      "RELA": "v.+n."
+    }],
+    "PHRASE": [{
+      "DEF": "有所贪图的爱",
+      "SIG": null,
+      "V": "cupboard love"
+    }, {
+      "DEF": "初恋",
+      "SIG": null,
+      "V": "first love"
+    }, {
+      "DEF": "非法同居;(不受婚姻和法律约束的)两性自由离合论",
+      "SIG": null,
+      "V": "free love"
+    }, {
+      "DEF": "恋爱事件;风流韵事",
+      "SIG": null,
+      "V": "love affair"
+    }, {
+      "DEF": "番茄",
+      "SIG": null,
+      "V": "love apple"
+    }, {
+      "DEF": "情爱珠〔六、七十年代西方嬉皮士所带象征情爱的彩色珠串〕",
+      "SIG": null,
+      "V": "love beads"
+    }, {
+      "DEF": "私生子",
+      "SIG": null,
+      "V": "love child"
+    }, {
+      "DEF": "聚餐会;恳亲会",
+      "SIG": null,
+      "V": "love feast"
+    }, {
+      "DEF": "(网球等的)败方得零分的比赛,一方全胜的比赛",
+      "SIG": null,
+      "V": "love game"
+    }, {
+      "DEF": "〔俚语〕腰间赘肉",
+      "SIG": null,
+      "V": "love handles"
+    }, {
+      "DEF": "情书",
+      "SIG": null,
+      "V": "love letter"
+    }, {
+      "DEF": "〔口语〕(一生中的)恋爱经历",
+      "SIG": null,
+      "V": "love life"
+    }, {
+      "DEF": "出自爱情的婚姻",
+      "SIG": null,
+      "V": "love match"
+    }, {
+      "DEF": "鸳鸯椅",
+      "SIG": null,
+      "V": "love seat"
+    }, {
+      "DEF": "【纲球】败方得零分的一盘比赛",
+      "SIG": null,
+      "V": "love set"
+    }, {
+      "DEF": "三角恋爱",
+      "SIG": null,
+      "V": "love triangle"
+    }, {
+      "DEF": "乐甫波",
+      "SIG": null,
+      "V": "love wave"
+    }, {
+      "DEF": "作爱",
+      "SIG": null,
+      "V": "make love"
+    }, {
+      "DEF": "精神恋爱",
+      "SIG": null,
+      "V": "platonic love"
+    }, {
+      "DEF": "(父母对子女)严加管教中体现的爱,慈爱家庭气氛中的严格管教",
+      "SIG": null,
+      "V": "tough love"
+    }],
+    "PRON": [{
+      "L": "US",
+      "V": "lʌv"
+    }, {
+      "L": "UK",
+      "V": "lʌv"
+    }],
+    "THES": [{
+      "A": ["hatred"],
+      "POS": "n",
+      "S": ["affection", "friendship", "adoration", "feeling", "darling", "dear", "dearest", "sweetheart", "honey"]
+    }, {
+      "A": ["hate", "dislike"],
+      "POS": "v",
+      "S": ["adore", "worship", "be in love with", "be devoted to", "like", "enjoy", "appreciate", "be partial to"]
+    }]
+  },
+  "MT": null,
+  "OxfD": null,
+  "Q": "LOVE",
+  "QD": {
+    "C_DEF": [{
+      "DEF": null,
+      "POS": "n",
+      "SEN": [{
+        "CONTEXT": null,
+        "D": "爱；爱情；热爱；恋爱",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }]
+    }, {
+      "DEF": null,
+      "POS": "v",
+      "SEN": [{
+        "CONTEXT": null,
+        "D": "爱；喜欢；热爱；喜爱",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }]
+    }, {
+      "DEF": null,
+      "POS": "web",
+      "SEN": [{
+        "CONTEXT": null,
+        "D": "爱心；真爱",
+        "R": 0,
+        "STS": null,
+        "URL": null
+      }]
+    }],
+    "HW": {
+      "DEF": "爱$$爱情$$喜欢$$热爱$$(两性间的)恋爱$$相爱$$想$$爱人$$爱人〔尤指女性,意中人〕$$愿意$$爱好$$爱慕$$(两性间)爱慕$$爱戴$$钟爱$$宝贝$$仁爱$$爱神$$眷恋$$热衷于$$赞美$$(俗)喜好$$心疼$$称赞$$所爱的东西$$〔口语〕可爱的人$$攀$$热切地$$爱的化身$$热心于$$性关系$$叫…钟情$$有…的倾向〔口语〕欢喜,爱好$$可爱的东西$$以仁爱对待:$$喜欢:$$敬拜:$$【体育】零分",
+      "SIG": "D86CEAEFA3504E6E1368552B058AD528",
+      "V": "love"
+    },
+    "INF": [{
+      "IE": "love",
+      "T": "s"
+    }, {
+      "IE": "loves",
+      "T": "pl"
+    }, {
+      "IE": "loved",
+      "T": "pp"
+    }, {
+      "IE": "loving",
+      "T": "prp"
+    }, {
+      "IE": "loves",
+      "T": "3pps"
+    }, {
+      "IE": "loves",
+      "T": "prt"
+    }, {
+      "IE": "loved",
+      "T": "pt"
+    }],
+    "PRON": [{
+      "L": "US",
+      "V": "lʌv"
+    }, {
+      "L": "UK",
+      "V": "lʌv"
+    }]
+  },
+  "SENT": null,
+  "SUGG": null
+}
