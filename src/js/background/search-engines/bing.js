@@ -33,6 +33,7 @@ var searchEngines = (function (searchEngines) {
 
     /* 
      * response format as follows:
+     *   key[string]: 'success'
      *   title[string]: search title
      *   phsym[object]: phonetic symbols
      *     - phsym['UK']
@@ -52,6 +53,7 @@ var searchEngines = (function (searchEngines) {
         transChecker(response);
       } else {
         var result = {
+          key: 'success',
           title: data.QD.HW.V || data.Q,
           phsym: data.QD.PRON,
           pron: {
@@ -70,8 +72,19 @@ var searchEngines = (function (searchEngines) {
       }
     }
 
-    function transChecker() {
-      noResult();
+    /* 
+     * response format as follows:
+     *   key[string]: 'success'
+     *   mt[string]: machine translation
+     */
+    function transChecker(response) {
+      var data = JSON.parse(response);
+      if (data.MT && data.MT.T) {
+        callback({
+          key: 'success',
+          mt: data.MT.T.replace(/(\{\d*#)|(\$\d*\})/g, '')
+        });
+      }
     }
 
     function backupChecker() {

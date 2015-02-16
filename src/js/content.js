@@ -60,10 +60,17 @@
   }
 
   function createPopPanel() {
+    var searchResults = {};
     return {
       hide: function(){
         if (this.element) {
           this.element.style.display = 'none';
+        }
+      },
+      destroy: function(){
+        if (this.element) {
+          document.body.removeChild(this.element);
+          this.element = null;
         }
       },
       show: function(px, py, ww) {
@@ -78,24 +85,61 @@
           panel.scrolling = 'no';
           panel.className = 'hybrid-translator';
           panel.addEventListener('mouseleave', function() {
-            popPanel.hide();
+            that.hide();
           }, false);
           document.body.appendChild(panel);
           this.element = panel;
-          $get(chrome.extension.getURL('html/content.html')).then(function(response){
-            var pdoc = panel.contentWindow.document;
-            pdoc.documentElement.innerHTML = response;
-            panel.height = pdoc.documentElement.scrollHeight || pdoc.body.scrollHeight;
-            return  pdoc.body;
-          }).then(function(pbody) {
-            // Request search result
+          var $doc = panel.contentWindow.document;
+          var $body;
+
+          $get(chrome.extension.getURL('html/content.html'))
+          // get iframe templet
+          .then(function(response){
+            $doc.documentElement.innerHTML = response;
+            $body = panel.contentWindow.document.body;
+            return $sendMessage({key: 'search', engine: 'bing', text: selection});
+          })
+          // bing dict result
+          .then(function(bingResult) {
+            searchResults.bing = bingResult;
+            if (bingResult.title) {
+              var title = $doc.createElement('h1');
+              title.innerHTML = bingResult.title;
+              $body.appendChild(title);
+            }
+            if (bingResult.cdef) {
+              var cdef = bingResult.cdef;
+              var defList = $doc.createElement('ul');
+              defList.className = 'cdef';
+              for (var i = 0; i < cdef.length; i += 1) {
+                var li = $doc.createElement('li');
+                var pos = $doc.createElement('div');
+                var def = $doc.createElement('div');
+                pos.className = 'pos';
+                def.className = 'def';
+                if (cdef[i].pos === 'web') {
+                  defList.appendChild($doc.createElement('hr'));
+                  pos.innerHTML = chrome.i18n.getMessage('web_def');
+                } else {
+                  pos.innerHTML = cdef[i].pos + '.';
+                }
+                def.innerHTML = cdef[i].def;
+                li.appendChild(pos);
+                li.appendChild(def);
+                defList.appendChild(li);
+              }
+              $body.appendChild(defList);
+              return $sendMessage({key: 'search', engine: 'iciba', text: selection});
+            }
+          })
+          // iciba result (pronunciation)
+          .then(function(icibaResult) {
+            
             ///TODO
+            panel.height = $doc.documentElement.scrollHeight || $doc.body.scrollHeight;
             that.show(px, py, ww);
           });
         }
-      },
-      destroy: function(){
-        ///TODO
       }
     };
   }
@@ -116,6 +160,19 @@
         reject(Error('Network Error'));
       };
       xhr.send();
+    });
+  }
+
+  // Simple Promise Chrome sendMessage Request
+  function $sendMessage(args) {
+    return new Promise(function (resolve, reject) {
+      chrome.runtime.sendMessage(args, function (response) {
+        if (response && response.key === 'success') {
+          resolve(response);
+        } else {
+          reject();
+        }
+      });
     });
   }
 }());

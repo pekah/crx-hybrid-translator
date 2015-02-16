@@ -15,10 +15,12 @@
     if (request.key === 'config') {
       chrome.storage.local.get('settings', function (localData) {
         if (localData.settings) {
+          localData.key = 'success';
           sendResponse(localData.settings);
         } else {
           chrome.storage.sync.get('settings', function (syncData) {
             if (syncData.settings) {
+              syncData.key = 'success';
               sendResponse(syncData.settings);
             } else {
               sendResponse(null);
