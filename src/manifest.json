@@ -32,6 +32,8 @@
   "web_accessible_resources": [
     "images/icon-24.png",
     "images/voice.gif",
+    "images/google.png",
+    "images/baidu.png",
     "css/content-iframe.css",
     "css/loader.css"
     ],

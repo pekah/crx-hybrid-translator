@@ -126,6 +126,22 @@
           });
         }
 
+        function addSearchIcons() {
+          addIcon(chrome.extension.getURL('images/google.png'), 'https://www.google.com/#newwindow=1&q=%s');
+          addIcon(chrome.extension.getURL('images/baidu.png'), 'http://www.baidu.com/s?ie=UTF-8&wd=%s');
+
+          function addIcon(img, url) {
+            var $a = $doc.createElement('a');
+            $a.className = 'search-icon';
+            $a.target = '_blank';
+            $a.href = url.replace(/%[sS]/, selection);
+            var $img = $doc.createElement('img');
+            $img.src = img;
+            $a.appendChild($img);
+            $body.appendChild($a);
+          }
+        }
+
         function addUrbanResult(uResult) {
           if (uResult.meaning) {
             var urban = $doc.createElement('a');
@@ -168,6 +184,8 @@
 
         function addBingResult(bingResult) {
             searchResults.bing = bingResult;
+
+            addSearchIcons();
 
             // add title
             if (bingResult.title) {
