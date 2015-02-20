@@ -100,7 +100,7 @@
           var $this = this;
           var $doc = panel.contentWindow.document;
           var $body = $doc.createElement('div');
-          var $phsym, $cdef;
+          var $title, $phsym, $cdef;
 
           var i, j, k;
 
@@ -109,6 +109,7 @@
 
           // add loader
           $doc.body.innerHTML = '<div class="loader"><div></div><div></div><div></div><div></div><div></div></div>';
+          $body.className = 'wrapper';
           $this.show(px, py, ww);
  
           $sendMessage({key: 'search', engine: 'bing', text: selection})
@@ -118,10 +119,34 @@
               $sendMessage({key: 'search', engine: 'iciba', text: selection})
               .then(addIcibaResult);
             }
+          })
+          .then(function() {
+            $sendMessage({key: 'search', engine: 'urban', text: selection})
+            .then(addUrbanResult);
           });
         }
 
+        function addUrbanResult(uResult) {
+          if (uResult.meaning) {
+            var urban = $doc.createElement('a');
+            urban.className = 'urban';
+            urban.href = uResult.href;
+            urban.target = '_blank';
+
+            var title = $doc.createElement('h2');
+            title.innerHTML = chrome.i18n.getMessage('engine_urban');
+            urban.appendChild(title);
+
+            var meaning = $doc.createElement('p');
+            meaning.innerHTML = uResult.meaning;
+            urban.appendChild(meaning);
+            $body.appendChild(urban);
+            $this.show(px, py, ww);
+          }
+        }
+
         function addIcibaResult(icibaResult) {
+          
           var icibaPron = icibaResult.pron;
           var phsym = searchResults.bing.phsym;
           var pronElems = $phsym.children;
@@ -146,9 +171,13 @@
 
             // add title
             if (bingResult.title) {
-              var title = $doc.createElement('h1');
-              title.innerHTML = bingResult.title;
-              $body.appendChild(title);
+              var t = $doc.createElement('h1');
+              t.innerHTML = bingResult.title;
+              var $title = $doc.createElement('a');
+              $title.href = 'http://www.iciba.com/' + selection;
+              $title.target = '_blank';
+              $title.appendChild(t);
+              $body.appendChild($title);
             }
 
             // add pronunciation

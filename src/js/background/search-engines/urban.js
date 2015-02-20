@@ -10,21 +10,17 @@ var searchEngines = (function (searchEngines) {
   'use strict';
   
   // Engine ID
-  searchEngines.iciba = {
-    name: chrome.i18n.getMessage('engine_iciba'),
+  searchEngines.urban = {
+    name: chrome.i18n.getMessage('engine_urban'),
     search: search
   };
 
-  var LEX_LINK = 'http://ct.dict-client.iciba.com/2013-01-22/?action=client&word=%s';
-  var BACKUP_LINK = 'http://www.iciba.com/%s';
+  var LEX_LINK = 'http://www.urbandictionary.com/define.php?term=%s';
 
   // get result and use callback to send response
   function search(text, callback) {
     $get(LEX_LINK.replace(/%[sS]/, text))
-    .then(lexChecker, function() {
-      $get(BACKUP_LINK.replace(/%[sS]/, text))
-      .then(lexChecker, noResult);
-    });
+    .then(lexChecker, noResult);
     
 
     /* 
@@ -35,19 +31,15 @@ var searchEngines = (function (searchEngines) {
      *     - pron['US']
      */
     function lexChecker(response) {
-      var r = /asplay\S+?(http\S+?\.mp3)/ig; 
-      var result = {
-        UK: r.exec(response)[1],
-        US: r.exec(response)[1]
-      };
-
-      if (result.UK && result.US) {
+      document.body.innerHTML = response;
+      var $meaning = document.getElementsByClassName('meaning')[0];
+      var $example = document.getElementsByClassName('example')[0];
+      if ($meaning) {
         callback({
-          href: BACKUP_LINK.replace(/%[sS]/, text),
-          pron: result
+          meaning: $meaning.innerHTML,
+          example: $example.innerHTML,
+          href: LEX_LINK.replace(/%[sS]/, text)
         });
-      } else {
-        noResult();
       }
     }
 

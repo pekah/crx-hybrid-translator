@@ -23,6 +23,7 @@ img.hybrid-translator {
 iframe.hybrid-translator {
   width: 330px !important;
   min-height: 200px !important;
+  max-height: 400px !important;
   background-color: white !important;
   border: 1px solid #e64e26 !important;
 }

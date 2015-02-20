@@ -26,10 +26,22 @@ h2 {
 }
 
 h1, h2, ul {
-  margin: 10px 0;
+  margin: 12px 0;
 }
 
-/* pronunciation */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 .pron {
   height: 15px;
   font-size: 11px;
@@ -64,3 +76,13 @@ h1, h2, ul {
   text-align: center;
   font-weight: bold;
 }
+
+h2 {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+
+
+

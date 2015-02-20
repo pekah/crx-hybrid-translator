@@ -97,5 +97,11 @@
    "engine_iciba": {
       "description": "engine name for display",
       "message": "金山词霸"
+   },
+
+   "engine_urban": {
+      "description": "engine name for display",
+      "message": "Urban Dictionary"
    }
+
 }
