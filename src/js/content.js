@@ -99,13 +99,18 @@
           //global elements
           var $this = this;
           var $doc = panel.contentWindow.document;
-          var $body = panel.contentWindow.document.body;
+          var $body = $doc.createElement('div');
           var $phsym, $cdef;
 
           var i, j, k;
 
-          $doc.head.innerHTML = '<link rel="stylesheet" href="' + chrome.extension.getURL('css/content-iframe.css') + '" />';
+          $doc.head.innerHTML = '<link rel="stylesheet" href="' + chrome.extension.getURL('css/content-iframe.css') + '" />' + 
+            '<link rel="stylesheet" href="' + chrome.extension.getURL('css/loader.css') + '" />';
 
+          // add loader
+          $doc.body.innerHTML = '<div class="loader"><div></div><div></div><div></div><div></div><div></div></div>';
+          $this.show(px, py, ww);
+ 
           // bing dict result(title, definitions)
           $sendMessage({key: 'search', engine: 'bing', text: selection})
           .then(function(bingResult) {
@@ -174,7 +179,9 @@
               div.innerHTML = bingResult.mt;
               $body.appendChild(div);
             }
-            console.log(bingResult.mt + 'sss');
+
+            $doc.body.innerHTML = '';
+            $doc.body.appendChild($body);
             $this.show(px, py, ww);
           })
           // iciba result (pronunciation)
