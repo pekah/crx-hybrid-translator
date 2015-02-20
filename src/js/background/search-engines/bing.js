@@ -58,7 +58,6 @@ var searchEngines = (function (searchEngines) {
         goTrans();
       } else {
         var result = {
-          key: 'success',
           title: data.QD.HW.V || data.Q,
           phsym: data.QD.PRON,
           pron: {
@@ -86,7 +85,6 @@ var searchEngines = (function (searchEngines) {
       var data = JSON.parse(response);
       if (data.MT && data.MT.T) {
         callback({
-          key: 'success',
           mt: data.MT.T.replace(/(\{\d*#)|(\$\d*\})/g, '')
         });
       } else {
@@ -99,10 +97,7 @@ var searchEngines = (function (searchEngines) {
     }
 
     function noResult() {
-      callback({
-        key: 'success',
-        noresult: true
-      });
+      callback({noresult: true});
     }
   }
 

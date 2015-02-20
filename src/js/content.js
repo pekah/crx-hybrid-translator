@@ -248,10 +248,10 @@
   function $sendMessage(args) {
     return new Promise(function (resolve, reject) {
       chrome.runtime.sendMessage(args, function (response) {
-        if (response && response.key === 'success') {
+        if (response) {
           resolve(response);
         } else {
-          reject();
+          reject(args);
         }
       });
     });

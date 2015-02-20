@@ -37,7 +37,6 @@ var searchEngines = (function (searchEngines) {
     function lexChecker(response) {
       var r = /asplay\S+?(http\S+?\.mp3)/ig; 
       callback({
-        key: 'success',
         pron: {
           UK: r.exec(response)[1],
           US: r.exec(response)[1]
