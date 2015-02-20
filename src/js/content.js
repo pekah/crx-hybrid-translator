@@ -11,6 +11,7 @@
 
   'use strict';
 
+  var IFRAME_WIDTH = 330;
   var selection = '';
   var popIcon = createPopIcon();
   var popPanel = createPopPanel();
@@ -81,9 +82,9 @@
         var panel = this.element;
         if (panel) {
           panel.style.top = (py + 30) + 'px';
-          panel.style.left = (px + panel.clientWidth + 20 > ww ? ww - panel.clientWidth - 20 : px) + 'px';
-          panel.height = panel.contentWindow.document.body.scrollHeight;
+          panel.style.left = (px + IFRAME_WIDTH + 20 > ww ? ww - IFRAME_WIDTH - 20 : px) + 'px';
           panel.style.display = 'block';
+          panel.height = panel.contentWindow.document.body.scrollHeight;
 
         } else {
           panel = document.createElement('iframe');

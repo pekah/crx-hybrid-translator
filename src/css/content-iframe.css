@@ -1,0 +1,65 @@
+html, body, div, span, h1, h2, h3, p, a, footer,
+header, hgroup, menu, nav, section, audio, ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  font-family: "Microsoft Yahei", Tahoma, "SimSun";
+  color: #1a1a1a;
+  font-size: 13px;
+}
+body {
+  margin: 8px;
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h1, h2, ul {
+  margin: 10px 0;
+}
+
+/* pronunciation */
+.pron {
+  height: 15px;
+  font-size: 11px;
+}
+
+.voice {
+  display: inline-block;
+  background: url('chrome-extension://__MSG_@@extension_id__/images/voice.gif');
+  width: 15px;
+  height: 15px;
+  margin-left: 3px;
+  margin-right: 5px;
+}
+
+.voice:hover {
+  background-position: -24px 0;
+}
+
+/* definition */
+.cdef  li {
+  display: table;
+  margin: 5px 0;
+}
+
+.cdef span {
+  display: table-cell;
+  padding: 0 5px;
+}
+
+.cdef .pos {
+  width: 30px;
+  text-align: center;
+  font-weight: bold;
+}
