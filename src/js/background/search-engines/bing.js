@@ -23,14 +23,17 @@ var searchEngines = (function (searchEngines) {
   // get result and use callback to send response
   function search(text, callback) {
     $get(LEX_LINK.replace(/%[sS]/, text))
-    .then(lexChecker, function() {
-      $get(TRANS_LINK.replace(/%[sS]/, text))
-      .then(transChecker, function() {
-        $get(BACKUP_LINK.replace(/%[sS]/, text))
-        .then(backupChecker, noResult);
-      });
-    });
+    .then(lexChecker, goTrans);
     
+    function goTrans() {
+      $get(TRANS_LINK.replace(/%[sS]/, text))
+      .then(transChecker, goBackup);
+    }
+
+    function goBackup() {
+      $get(BACKUP_LINK.replace(/%[sS]/, text))
+      .then(backupChecker, noResult);
+    }
 
     /* 
      * response format as follows:
@@ -50,7 +53,7 @@ var searchEngines = (function (searchEngines) {
       var data = JSON.parse(response);
       if (!data.Q || !data.QD) {
         // no lexicon result
-        transChecker(response);
+        goTrans();
       } else {
         var result = {
           key: 'success',

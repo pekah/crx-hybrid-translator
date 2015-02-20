@@ -7,6 +7,7 @@ header, hgroup, menu, nav, section, audio, ul {
   font-family: "Microsoft Yahei", Tahoma, "SimSun";
   color: #1a1a1a;
   font-size: 13px;
+  line-height: 16px;
 }
 body {
   margin: 8px;

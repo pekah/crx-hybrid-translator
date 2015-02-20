@@ -165,12 +165,16 @@
             }
 
             // add machine translation
-            if (bingResult.machine) {
+            if (bingResult.mt) {
               var mTitle = $doc.createElement('h2');
               mTitle.innerHTML = chrome.i18n.getMessage('machine_translation');
               $body.appendChild(mTitle);
 
+              var div = $doc.createElement('div');
+              div.innerHTML = bingResult.mt;
+              $body.appendChild(div);
             }
+            console.log(bingResult.mt + 'sss');
             $this.show(px, py, ww);
           })
           // iciba result (pronunciation)
