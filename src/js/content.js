@@ -1,3 +1,5 @@
+/*jshint scripturl:true*/
+
 /*!
  * Jesse Wong
  * @straybugs
@@ -18,10 +20,12 @@
     if (newSelection.length <= 0) {
       popIcon.hide();
     } else {
-      var py = evt.pageY - 40;
-      var px = evt.pageX + 30;
-      var ww = window.innerWidth;
-      popIcon.show(px, py, ww);
+      if (isContainChinese(newSelection) || isContainEnglish(newSelection)) {
+        var py = evt.pageY - 40;
+        var px = evt.pageX + 30;
+        var ww = window.innerWidth;
+        popIcon.show(px, py, ww);
+      }
     }
 
     if (selection === newSelection) {
@@ -78,66 +82,120 @@
         if (panel) {
           panel.style.top = (py + 30) + 'px';
           panel.style.left = (px + panel.clientWidth + 20 > ww ? ww - panel.clientWidth - 20 : px) + 'px';
+          panel.height = panel.contentWindow.document.body.scrollHeight;
           panel.style.display = 'block';
+
         } else {
-          var that = this;
           panel = document.createElement('iframe');
           panel.scrolling = 'no';
           panel.className = 'hybrid-translator';
           panel.addEventListener('mouseleave', function() {
-            that.hide();
+            $this.hide();
           }, false);
           document.body.appendChild(panel);
           this.element = panel;
-          var $doc = panel.contentWindow.document;
-          var $body;
 
-          $get(chrome.extension.getURL('html/content.html'))
-          // get iframe templet
-          .then(function(response){
-            $doc.documentElement.innerHTML = response;
-            $body = panel.contentWindow.document.body;
-            return $sendMessage({key: 'search', engine: 'bing', text: selection});
-          })
-          // bing dict result
+          //global elements
+          var $this = this;
+          var $doc = panel.contentWindow.document;
+          var $body = panel.contentWindow.document.body;
+          var $phsym, $cdef;
+
+          var i, j, k;
+
+          $doc.head.innerHTML = '<link rel="stylesheet" href="' + chrome.extension.getURL('css/content-iframe.css') + '" />';
+
+          // bing dict result(title, definitions)
+          $sendMessage({key: 'search', engine: 'bing', text: selection})
           .then(function(bingResult) {
             searchResults.bing = bingResult;
+
+            // add title
             if (bingResult.title) {
               var title = $doc.createElement('h1');
               title.innerHTML = bingResult.title;
               $body.appendChild(title);
             }
+
+            // add pronunciation
+            if (bingResult.phsym) {
+              var phsym = bingResult.phsym;
+              $phsym = $doc.createElement('div');
+              $phsym.className = 'pron';
+              for (i = 0; i < phsym.length; i += 1) {
+                var lang = phsym[i].L;
+                var symbol = $doc.createElement('span');
+                symbol.className = 'phsym';
+                symbol.innerHTML = chrome.i18n.getMessage(lang) + ': [' + phsym[i].V + ']';
+                $phsym.appendChild(symbol);
+
+                var voice = $doc.createElement('a');
+                voice.href = 'javascript:void(0);';
+                voice.className = 'voice';
+                voice.style.display = 'none';
+                $phsym.appendChild(voice);
+              }
+              $body.appendChild($phsym);
+            }
+
+            // add definitions
             if (bingResult.cdef) {
               var cdef = bingResult.cdef;
-              var defList = $doc.createElement('ul');
-              defList.className = 'cdef';
-              for (var i = 0; i < cdef.length; i += 1) {
-                var li = $doc.createElement('li');
-                var pos = $doc.createElement('div');
-                var def = $doc.createElement('div');
+              $cdef = $doc.createElement('ul');
+              $cdef.className = 'cdef';
+              for (i = 0; i < cdef.length; i += 1) {
+                var list = $doc.createElement('li');
+                var pos = $doc.createElement('span');
+                var def = $doc.createElement('span');
                 pos.className = 'pos';
                 def.className = 'def';
                 if (cdef[i].pos === 'web') {
-                  defList.appendChild($doc.createElement('hr'));
+                  $cdef.appendChild($doc.createElement('hr'));
                   pos.innerHTML = chrome.i18n.getMessage('web_def');
                 } else {
                   pos.innerHTML = cdef[i].pos + '.';
                 }
                 def.innerHTML = cdef[i].def;
-                li.appendChild(pos);
-                li.appendChild(def);
-                defList.appendChild(li);
+                list.appendChild(pos);
+                list.appendChild(def);
+                $cdef.appendChild(list);
               }
-              $body.appendChild(defList);
-              return $sendMessage({key: 'search', engine: 'iciba', text: selection});
+              $body.appendChild($cdef);
             }
+
+            // add machine translation
+            if (bingResult.machine) {
+              var mTitle = $doc.createElement('h2');
+              mTitle.innerHTML = chrome.i18n.getMessage('machine_translation');
+              $body.appendChild(mTitle);
+
+            }
+            $this.show(px, py, ww);
           })
           // iciba result (pronunciation)
-          .then(function(icibaResult) {
-            
-            ///TODO
-            panel.height = $doc.documentElement.scrollHeight || $doc.body.scrollHeight;
-            that.show(px, py, ww);
+          .then(function() {
+            if (searchResults.bing.phsym) {
+              $sendMessage({key: 'search', engine: 'iciba', text: selection})
+              .then(function(icibaResult) {
+                var icibaPron = icibaResult.pron;
+                var phsym = searchResults.bing.phsym;
+                var pronElems = $phsym.children;
+                for (i = 0; i < phsym.length; i += 1) {
+                  var lang = phsym[i].L;
+                  if (icibaPron[lang]) {
+                    var p = pronElems[2*i+1];
+                    p.style.display = '';
+                    p.onclick = voicePlay(icibaPron[lang]);
+                    p.onmouseover = p.onclick;
+                  }
+                }
+                function voicePlay(url) {
+                  return function() {
+                    new Audio(url).play();
+                  };
+                }
+              });
+            }
           });
         }
       }
@@ -175,4 +233,13 @@
       });
     });
   }
+
+  function isContainChinese(text) {
+    return /[\u4e00-\u9fa5]/.test(text);
+  }
+
+  function isContainEnglish(text) {
+    return /[a-z,A-Z]/.test(text);
+  }
+
 }());

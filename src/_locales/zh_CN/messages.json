@@ -87,5 +87,10 @@
    "engine_bing": {
       "description": "engine name for display",
       "message": "必应词典"
+   },
+
+   "engine_iciba": {
+      "description": "engine name for display",
+      "message": "金山词霸"
    }
 }

@@ -30,8 +30,8 @@
   } ],
 
   "web_accessible_resources": [
-    "images/icon-24.png" , "images/voice.png",
-    "html/content.html"
+    "images/icon-24.png" , "images/voice.gif",
+    "css/content-iframe.css"
     ],
 
   "browser_action": {
