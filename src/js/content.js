@@ -111,9 +111,37 @@
           $doc.body.innerHTML = '<div class="loader"><div></div><div></div><div></div><div></div><div></div></div>';
           $this.show(px, py, ww);
  
-          // bing dict result(title, definitions)
           $sendMessage({key: 'search', engine: 'bing', text: selection})
-          .then(function(bingResult) {
+          .then(addBingResult)
+          .then(function() {
+            if (searchResults.bing.phsym) {
+              $sendMessage({key: 'search', engine: 'iciba', text: selection})
+              .then(addIcibaResult);
+            }
+          });
+        }
+
+        function addIcibaResult(icibaResult) {
+          var icibaPron = icibaResult.pron;
+          var phsym = searchResults.bing.phsym;
+          var pronElems = $phsym.children;
+          for (i = 0; i < phsym.length; i += 1) {
+            var lang = phsym[i].L;
+            if (icibaPron[lang]) {
+              var p = pronElems[2*i+1];
+              p.style.display = '';
+              p.onclick = voicePlay(icibaPron[lang]);
+              p.onmouseover = p.onclick;
+            }
+          }
+          function voicePlay(url) {
+            return function() {
+              new Audio(url).play();
+            };
+          }
+        }
+
+        function addBingResult(bingResult) {
             searchResults.bing = bingResult;
 
             // add title
@@ -194,33 +222,7 @@
             $doc.body.innerHTML = '';
             $doc.body.appendChild($body);
             $this.show(px, py, ww);
-          })
-          // iciba result (pronunciation)
-          .then(function() {
-            if (searchResults.bing.phsym) {
-              $sendMessage({key: 'search', engine: 'iciba', text: selection})
-              .then(function(icibaResult) {
-                var icibaPron = icibaResult.pron;
-                var phsym = searchResults.bing.phsym;
-                var pronElems = $phsym.children;
-                for (i = 0; i < phsym.length; i += 1) {
-                  var lang = phsym[i].L;
-                  if (icibaPron[lang]) {
-                    var p = pronElems[2*i+1];
-                    p.style.display = '';
-                    p.onclick = voicePlay(icibaPron[lang]);
-                    p.onmouseover = p.onclick;
-                  }
-                }
-                function voicePlay(url) {
-                  return function() {
-                    new Audio(url).play();
-                  };
-                }
-              });
-            }
-          });
-        }
+          }
       }
     };
   }
