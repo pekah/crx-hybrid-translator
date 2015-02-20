@@ -24,23 +24,23 @@ var searchEngines = (function (searchEngines) {
   function search(text, callback) {
     $get(LEX_LINK.replace(/%[sS]/, text))
     .then(lexChecker, function() {
-      return $get(TRANS_LINK.replace(/%[sS]/, text));
-    })
-    .then(transChecker, function() {
-      return $get(BACKUP_LINK.replace(/%[sS]/, text));
-    })
-    .then(backupChecker, noResult);
+      $get(TRANS_LINK.replace(/%[sS]/, text))
+      .then(transChecker, function() {
+        $get(BACKUP_LINK.replace(/%[sS]/, text))
+        .then(backupChecker, noResult);
+      });
+    });
+    
 
     /* 
      * response format as follows:
      *   key[string]: 'success'
      *   title[string]: search title
-     *   phsym[object]: phonetic symbols
-     *     - phsym['UK']
-     *     - phsym['US']
+     *   phsym[array]: phonetic symbols
+     *     - L[string]: language('UK'|'US'|'PY')
+     *     - V[string]: Phonetic Alphabet
      *   pron[object]: audio url
-     *     - pron['UK']
-     *     - pron['US']
+     *     - 'UK'|'US'|'PY'[string]: url
      *   cdef[array]: common definitions
      *     array items[object]:
      *       - 'pos'[string] part of speech
@@ -92,6 +92,7 @@ var searchEngines = (function (searchEngines) {
     }
 
     function noResult() {
+      console.log('noResult');
       callback(null);
     }
   }
