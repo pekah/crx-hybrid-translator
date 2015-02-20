@@ -35,12 +35,12 @@ var searchEngines = (function (searchEngines) {
      *     - pron['US']
      */
     function lexChecker(response) {
-      /asplay\S+?(http\S+?\.mp3).*?(http\S+?\.mp3)/ig.exec(response);     
+      var r = /asplay\S+?(http\S+?\.mp3)/ig; 
       callback({
         key: 'success',
         pron: {
-          UK: RegExp.$1,
-          US: RegExp.$2
+          UK: r.exec(response)[1],
+          US: r.exec(response)[1]
         }
       });
     }
