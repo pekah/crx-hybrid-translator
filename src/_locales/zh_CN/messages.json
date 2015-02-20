@@ -44,9 +44,14 @@
       "message": "自动发音"
    },
 
-   "no_result": {
+   "no_result_title": {
       "description": "No search result",
-      "message": "没有结果："
+      "message": "木有结果"
+   },
+
+   "no_result_content": {
+      "description": "No search result",
+      "message": "我们之间，注定没有结果。"
    },
 
    "more_definitions": {

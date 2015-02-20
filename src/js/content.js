@@ -175,9 +175,20 @@
               mTitle.innerHTML = chrome.i18n.getMessage('machine_translation');
               $body.appendChild(mTitle);
 
-              var div = $doc.createElement('div');
-              div.innerHTML = bingResult.mt;
-              $body.appendChild(div);
+              var mdiv = $doc.createElement('div');
+              mdiv.innerHTML = bingResult.mt;
+              $body.appendChild(mdiv);
+            }
+
+            // add no result
+            if (bingResult.noresult) {
+              var nTitle = $doc.createElement('h2');
+              nTitle.innerHTML = chrome.i18n.getMessage('no_result_title');
+              $body.appendChild(nTitle);
+
+              var ndiv = $doc.createElement('div');
+              ndiv.innerHTML = chrome.i18n.getMessage('no_result_content');
+              $body.appendChild(ndiv);
             }
 
             $doc.body.innerHTML = '';

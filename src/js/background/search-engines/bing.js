@@ -31,8 +31,10 @@ var searchEngines = (function (searchEngines) {
     }
 
     function goBackup() {
-      $get(BACKUP_LINK.replace(/%[sS]/, text))
-      .then(backupChecker, noResult);
+      // TODO get result from the normal one
+      // $get(BACKUP_LINK.replace(/%[sS]/, text))
+      // .then(backupChecker, noResult);
+      noResult();
     }
 
     /* 
@@ -87,6 +89,8 @@ var searchEngines = (function (searchEngines) {
           key: 'success',
           mt: data.MT.T.replace(/(\{\d*#)|(\$\d*\})/g, '')
         });
+      } else {
+        backupChecker();
       }
     }
 
@@ -95,8 +99,10 @@ var searchEngines = (function (searchEngines) {
     }
 
     function noResult() {
-      console.log('noResult');
-      callback(null);
+      callback({
+        key: 'success',
+        noresult: true
+      });
     }
   }
 
