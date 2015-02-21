@@ -127,16 +127,17 @@
         }
 
         function addSearchIcons() {
-          addIcon(chrome.extension.getURL('images/google.png'), 'https://www.google.com/#newwindow=1&q=%s');
-          addIcon(chrome.extension.getURL('images/baidu.png'), 'http://www.baidu.com/s?ie=UTF-8&wd=%s');
+          addIcon('google', 'https://www.google.com/#newwindow=1&q=%s');
+          addIcon('baidu', 'http://www.baidu.com/s?ie=UTF-8&wd=%s');
 
           function addIcon(img, url) {
             var $a = $doc.createElement('a');
             $a.className = 'search-icon';
+            $a.title = chrome.i18n.getMessage(img + '_search');
             $a.target = '_blank';
             $a.href = url.replace(/%[sS]/, selection);
             var $img = $doc.createElement('img');
-            $img.src = img;
+            $img.src = chrome.extension.getURL('images/' + img + '.png');
             $a.appendChild($img);
             $body.appendChild($a);
           }

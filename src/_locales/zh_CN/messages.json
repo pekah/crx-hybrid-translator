@@ -89,6 +89,16 @@
       "message": "机器翻译"
    },
 
+   "google_search": {
+      "description": "google search icon title",
+      "message": "谷歌搜索"
+   },
+
+   "baidu_search": {
+      "description": "baidu search icon title",
+      "message": "百度搜索"
+   },
+
    "engine_bing": {
       "description": "engine name for display",
       "message": "必应词典"
