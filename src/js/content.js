@@ -132,7 +132,7 @@
           spanel.className = 'search-panel';
           $body.appendChild(spanel);
 
-          addIcon('google', 'https://www.google.com/#newwindow=1&q=%s');
+          addIcon('google', 'http://74.125.12.150/#newwindow=1&q=%s');
           addIcon('baidu', 'http://www.baidu.com/s?ie=UTF-8&wd=%s');
 
           function addIcon(img, url) {
