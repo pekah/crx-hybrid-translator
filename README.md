@@ -9,6 +9,8 @@ Chrome 扩展，网页划词翻译。
 
 ![logo](./assets/web-store/small.png)
 
+![screen-shot](./assets/web-store/screen-shot2.png)
+
 版本
 ----
 
