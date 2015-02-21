@@ -4,43 +4,35 @@
   <meta charset="utf-8">
   <style type="text/css">
     body {
+      width: 230px;
       overflow: hidden;
       font-family: "Microsoft Yahei",Tahoma,"SimSun";
       font-size: 14px;
     }
+    .wrapper {
+      width: 200px;
+      margin: 0 auto;
+    }
+    .title {
+      text-align: center;
+    }
+    footer {
+      font-size: 0.2rem;
+      text-align: right;
+      margin-top: 10px;
+    }
   </style>
-  <script type="text/javascript" src="/js/lib/sea-modules/seajs/seajs/2.2.1/sea-debug.js"> </script>
 </head>
 <body>
 
-  <header>
-    <img src="/images/logo.png" alt="LOGO" />
-  </header>
+  <div class="wrapper">
+    <h3 class="title">当前页面二维码</h3>
+    <p class="title" id="page-title"></p>
+    <div id="qrcode"></div>
+  </div>
+  <footer>多词典划译 by StaryBugs</footer>
 
-  <script id="entry-template" type="text/x-handlebars-template">
-    <form>
-      <fieldset>
-        <legend>{{ inline.title }}</legend>
-
-        <input type="checkbox" id="inlineEnabledBox" class="install" />
-        <label for="inlineEnabledBox">{{ inline.enabledBox }}</label>
-
-        <input type="checkbox" id="transIconBox" class="install" />
-        <label for="transIconBox">{{ inline.iconBox }}</label>
-      </fieldset>
-
-      <fieldset>
-        <legend>{{ other.title }}</legend>
-
-        <input type="checkbox" id="transChineseBox" class="install" />
-        <label for="transChineseBox">{{ other.chineseBox }}</label>
-
-        <input type="checkbox" id="transAutoplayBox" />
-        <label for="transAutoplayBox">{{ other.autoplayBox }}</label>
-      </fieldset>
-    </form>
-  </script>
-  
-  <script src="../js/popup/seajs-config.js"></script>
+  <script src="../js/lib/qrcode.min.js"></script>
+  <script src="../js/popup.js"></script>
 </body>
 </html>

@@ -104,7 +104,7 @@ module.exports = function(grunt) {
         expand: true,
         nonull: true,
         cwd: '<%= config.source %>/js/',
-        src: '**.js',
+        src: ['**.js', 'lib/**/*.js'],
         dest: '<%= config.build %>/dev/js/'
       },
       cssToDest: {
