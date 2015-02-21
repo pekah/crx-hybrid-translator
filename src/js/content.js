@@ -127,6 +127,11 @@
         }
 
         function addSearchIcons() {
+
+          var spanel = $doc.createElement('div');
+          spanel.className = 'search-panel';
+          $body.appendChild(spanel);
+
           addIcon('google', 'https://www.google.com/#newwindow=1&q=%s');
           addIcon('baidu', 'http://www.baidu.com/s?ie=UTF-8&wd=%s');
 
@@ -139,7 +144,7 @@
             var $img = $doc.createElement('img');
             $img.src = chrome.extension.getURL('images/' + img + '.png');
             $a.appendChild($img);
-            $body.appendChild($a);
+            spanel.appendChild($a);
           }
         }
 

@@ -1,7 +1,7 @@
 {
    "extension_name": {
       "description": "Extension name",
-      "message": "多词典翻译"
+      "message": "多词典划译"
    },
 
    "extension_short_name": {
@@ -11,7 +11,7 @@
 
    "extension_description": {
       "description": "Description of extension",
-      "message": "网页划词翻译，多个词典一起查，仅供编程技术学习交流，请低调使用"
+      "message": "网页划词翻译，混合多个词典，仅供编程技术学习交流，请低调使用"
    },
 
    "inline_title": {
