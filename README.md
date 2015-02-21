@@ -1,7 +1,9 @@
-多词典翻译
+多词典划译
 ==========
 
-<a target="_blank" href="https://chrome.google.com/webstore/detail/kkgcfdmlnfpdjmnheeojdlgpmhaeekga">![Try it now in CWS](https://raw.githubusercontent.com/Crimx/hybrid-translator/master/assets/images/tryitnow.png "Click here to install this sample from the Chrome Web Store")</a>
+<a target="_blank" href="https://chrome.google.com/extensions/detail/cdonnmffkdaoajfknoeeecmchibpmkmg">![Try it now in CWS](https://raw.githubusercontent.com/Crimx/hybrid-translator/master/assets/images/tryitnow.png "Click here to install this sample from the Chrome Web Store")</a>
+
+[Google Web Store](https://chrome.google.com/extensions/detail/cdonnmffkdaoajfknoeeecmchibpmkmg) 或者 [直接下载 crx](https://github.com/Crimx/hybrid-translator/releases/tag/3.0.0)
 
 Chrome 扩展，网页划词翻译。
 
