@@ -128,22 +128,50 @@
 
         function addSearchIcons() {
 
+          var searchers = {
+            bing: {
+              name: 'bing',
+              sURL: 'http://cn.bing.com/search?q=%s',
+              tURL: 'http://cn.bing.com/dict/search?q=%s'
+            },
+            baidu: {
+              name: 'baidu',
+              sURL: 'http://www.baidu.com/s?ie=UTF-8&wd=%s'
+            },
+            google: {
+              name: 'google',
+              sURL: 'http://74.125.12.150/#newwindow=1&q=%s',
+              tURL: 'http://translate.google.cn/#auto/zh-CN/%s'
+            }
+          };
+
           var spanel = $doc.createElement('div');
           spanel.className = 'search-panel';
           $body.appendChild(spanel);
 
-          addIcon('bing', 'http://cn.bing.com/search?q=%s');
-          addIcon('baidu', 'http://www.baidu.com/s?ie=UTF-8&wd=%s');
-          addIcon('google', 'http://74.125.12.150/#newwindow=1&q=%s');
+          // rightclick
+          spanel.oncontextmenu = function(event) {
+            var sName = /^(\S*)-search$/i.exec(event.path[1].id)[1];
+            var tURL = sName && searchers[sName].tURL;
+            if (tURL) {
+              chrome.runtime.sendMessage({key: 'new-tab', url: tURL.replace(/%[sS]/, selection)});
+              event.preventDefault();
+            }
+          };
 
-          function addIcon(img, url) {
+          for (var i in searchers) {
+            addIcon(searchers[i]);
+          }
+
+          function addIcon(searcher) {
             var $a = $doc.createElement('a');
             $a.className = 'search-icon';
-            $a.title = chrome.i18n.getMessage(img + '_search');
+            $a.id = searcher.name + '-search';
+            $a.title = chrome.i18n.getMessage(searcher.name + '_search');
             $a.target = '_blank';
-            $a.href = url.replace(/%[sS]/, selection);
+            $a.href = searcher.sURL.replace(/%[sS]/, selection);
             var $img = $doc.createElement('img');
-            $img.src = chrome.extension.getURL('images/' + img + '.png');
+            $img.src = chrome.extension.getURL('images/' + searcher.name + '.png');
             $a.appendChild($img);
             spanel.appendChild($a);
           }

@@ -91,7 +91,7 @@
 
    "google_search": {
       "description": "google search icon title",
-      "message": "谷歌搜索"
+      "message": "谷歌搜索，右击谷歌翻译"
    },
 
    "baidu_search": {
@@ -101,7 +101,7 @@
 
    "bing_search": {
       "description": "bing search icon title",
-      "message": "必应搜索"
+      "message": "必应搜索，右击必应词典搜索"
    },
 
    "engine_bing": {
@@ -117,6 +117,16 @@
    "engine_urban": {
       "description": "engine name for display",
       "message": "Urban Dictionary"
+   },
+
+   "app_active": {
+      "description": "app is active",
+      "message": "划译已开启"
+   },
+
+   "app_inactive": {
+      "description": "app is active",
+      "message": "划译已关闭"
    }
 
 }
