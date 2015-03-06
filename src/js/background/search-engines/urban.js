@@ -31,16 +31,26 @@ var searchEngines = (function (searchEngines) {
      *     - pron['US']
      */
     function lexChecker(response) {
-      document.body.innerHTML = response;
-      var $meaning = document.getElementsByClassName('meaning')[0];
-      var $example = document.getElementsByClassName('example')[0];
-      if ($meaning) {
+      // document.body.innerHTML = response;
+      // var $meaning = document.getElementsByClassName('meaning')[0];
+      // var $example = document.getElementsByClassName('example')[0];
+      // if ($meaning) {
+      //   callback({
+      //     meaning: $meaning.innerHTML,
+      //     example: $example.innerHTML,
+      //     href: LEX_LINK.replace(/%[sS]/, text)
+      //   });
+      // }
+      var m = /class=["']meaning["']>([^]*?)<\/div>/i.exec(response)[1];
+      var e = /class=["']example["']>([^]*?)<\/div>/i.exec(response)[1];
+      if (m) {
         callback({
-          meaning: $meaning.innerHTML,
-          example: $example.innerHTML,
+          meaning: m,
+          example: e || '',
           href: LEX_LINK.replace(/%[sS]/, text)
         });
       }
+      
     }
 
     function noResult() {
