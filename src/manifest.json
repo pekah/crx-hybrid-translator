@@ -46,7 +46,8 @@
 
   "permissions": [
     "storage",
-    "tabs"
+    "tabs",
+    "notifications"
   ],
 
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
