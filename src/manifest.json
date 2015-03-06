@@ -20,7 +20,7 @@
     "scripts": [
       "js/background.js"
     ],
-    "persistent": true
+    "persistent": false
   },
 
   "content_scripts": [ {
