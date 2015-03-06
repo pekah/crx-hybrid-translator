@@ -13,6 +13,24 @@
       width: 200px;
       margin: 0 auto;
     }
+    .button {
+      text-align: center;
+      margin: 15px auto;
+    }
+    .button > a {
+      padding: 5px 15px;
+      text-align: center;
+      border-radius: 4px;
+      text-decoration:none;
+      color: white;
+      background: silver;
+    }
+    .button > .active {
+      background: orange;
+    }
+    .button > .active:hover {
+      box-shadow: rgb(241, 172, 23) 0px 0px 17.3807220458984px 0px;
+    }
     .title {
       text-align: center;
     }
@@ -26,6 +44,7 @@
 <body>
 
   <div class="wrapper">
+    <div class="button" id="app-active"></div>
     <h3 class="title">当前页面二维码</h3>
     <p class="title" id="page-title"></p>
     <div id="qrcode"></div>

@@ -16,16 +16,32 @@
   var popIcon = createPopIcon();
   var popPanel = createPopPanel();
 
+  var appActive = true;
+  chrome.runtime.sendMessage({key: 'config'}, function (response) {
+    if (response) {
+      appActive = response.appActive;
+    }
+  });
+  // live update state
+  chrome.runtime.onMessage.addListener(
+      function (request, sender, sendResponse) {
+    if (request.key === 'app-state-changed') {
+      appActive = request.appActive;
+    }
+  });
+
   document.body.addEventListener('mouseup', function (evt) {
     var newSelection = window.getSelection().toString();
     if (newSelection.length <= 0) {
       popIcon.hide();
     } else {
-      if (isContainChinese(newSelection) || isContainEnglish(newSelection)) {
-        var py = evt.pageY - 40;
-        var px = evt.pageX + 30;
-        var ww = window.innerWidth;
-        popIcon.show(px, py, ww);
+      if (appActive) {
+        if (isContainChinese(newSelection) || isContainEnglish(newSelection)) {
+          var py = evt.pageY - 40;
+          var px = evt.pageX + 30;
+          var ww = window.innerWidth;
+          popIcon.show(px, py, ww);
+        }
       }
     }
 

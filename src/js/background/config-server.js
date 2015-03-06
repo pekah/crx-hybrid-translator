@@ -31,6 +31,9 @@
     } else if (request.key === 'new-tab') {
       chrome.tabs.create({url: request.url});
       sendResponse({key: 'success'});
+    } else if (request.key === 'save') {
+      save(request.data);
+      sendResponse({key: 'success'});
     }
     return true; // Let sender keep the channel open until sendResponse is called
   });
@@ -38,12 +41,7 @@
   // settings before app starts
   chrome.runtime.onInstalled.addListener(function(details){
     if(details.reason === 'install' || details.reason === 'update'){
-      var data = {
-        appActive: true
-      };
-      chrome.storage.local.set({config: data}, function () {
-        chrome.storage.sync.set({config: data});
-      });
+      save({ appActive: true });
 
       // update notification
       var i = 1;
@@ -63,5 +61,11 @@
       chrome.notifications.create('', opt, function() {});
     }
   });
+
+  function save(data) {
+    chrome.storage.local.set({config: data}, function () {
+      chrome.storage.sync.set({config: data});
+    });
+  }
   
 }());
