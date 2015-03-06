@@ -99,6 +99,11 @@
       "message": "百度搜索"
    },
 
+   "bing_search": {
+      "description": "bing search icon title",
+      "message": "必应搜索"
+   },
+
    "engine_bing": {
       "description": "engine name for display",
       "message": "必应词典"

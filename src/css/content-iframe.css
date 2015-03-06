@@ -83,13 +83,13 @@ a:hover {
   float: right;
 }
 
-.search-panel {
-  position: absolute;
-  right: -6px;
-  top: -6px;
-  overflow: hidden;
+.search-icon:hover {
+  background: silver;
 }
 
-
-
-
+.search-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+}

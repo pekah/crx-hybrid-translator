@@ -132,8 +132,9 @@
           spanel.className = 'search-panel';
           $body.appendChild(spanel);
 
-          addIcon('google', 'http://74.125.12.150/#newwindow=1&q=%s');
+          addIcon('bing', 'http://cn.bing.com/search?q=%s');
           addIcon('baidu', 'http://www.baidu.com/s?ie=UTF-8&wd=%s');
+          addIcon('google', 'http://74.125.12.150/#newwindow=1&q=%s');
 
           function addIcon(img, url) {
             var $a = $doc.createElement('a');
