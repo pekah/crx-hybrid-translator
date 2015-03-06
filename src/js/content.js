@@ -163,6 +163,12 @@
             var meaning = $doc.createElement('p');
             meaning.innerHTML = uResult.meaning;
             urban.appendChild(meaning);
+
+            var example = $doc.createElement('p');
+            example.className = 'urban-example';
+            example.innerHTML = uResult.example;
+            urban.appendChild(example);
+
             $body.appendChild(urban);
             $this.show(px, py, ww);
           }

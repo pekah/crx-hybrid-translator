@@ -93,3 +93,8 @@ a:hover {
   top: 0;
   overflow: hidden;
 }
+
+.urban-example {
+  margin-top: 5px;
+  font-style: italic;
+}
