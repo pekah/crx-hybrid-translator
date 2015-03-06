@@ -1,12 +1,4 @@
 {
-  "name": "BingDictPlus",
-  "version": "2.0.2",
-  "description": "Chrome extension",
-  "author": "StrayBugs",
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
   "devDependencies": {
     "connect-livereload": "^0.4.0",
     "grunt": "^0.4.5",
